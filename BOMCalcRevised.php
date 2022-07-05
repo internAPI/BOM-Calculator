@@ -1,0 +1,788 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>BOM Calculator</title>
+	<link href="./Styles/style.css" rel="stylesheet" type="text/css">
+	
+</head>
+
+<body>
+<!--DISPLAY PORTION-->
+	<?php
+	
+		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+// bagspouchmainDispay			
+			function bagsAndPouchMainDisplay($title) {
+				include('BagsAndPouchesPage.php');
+			} // endae bagsAndPouchMainDisplay function
+// MFT mainDisplay			
+			function mftMainDisplay($title) {
+				echo "
+				<form method = 'POST' action ='BOMCalcRevised.php'>
+					<h1 id = 'header1' style = 'padding: auto;' >$title BOM</h1>
+					<p >
+						<label for = 'numacross'><b id = 'bold' >*</b>Number Across<b id = 'bold' >*</b>:</label>
+						<input type= 'number' name = 'numacross' placeholder = Enter value='' maxlength = '14' autofocus onChange='setDecimal(this)'step = '.0001' autocomplete='off' />
+					</p>
+					<p><b id = 'bold' >*</b>If combo job add number across for ALL items</p>
+					
+					<script>
+						function setDecimal(val) {
+							val.value = parseFloat(val.value).toFixed(4);
+						}
+					</script>
+					
+					<input name='MFT' type='hidden' value='MFT'/>
+					<br>
+					<div> 
+						<label for = 'submit'>
+							<button id = 'sub' type = 'submit' name = 'submit' value = 'Calculate'> Calculate </button>
+							<button id = 'sub' type = 'reset' name = 'reset' value = 'Clear'> Clear </button>
+						</label>
+					</div
+				</form>
+					";
+			} // endae mftMainDisplay function
+// Impression main Display			
+			function impressionMainDisplay($title) {
+				echo "
+					<form method = 'POST' action ='BOMCalcRevised.php'>
+						<h1 id = 'header1' > M ($title) BOM</h1>
+						
+						
+						<p>
+							<label for = 'bagrepeat'>Enter bag repeat (inches):</label>
+							<input type= 'number' name = 'bagrepeat' placeholder = Enter value = '' maxlength = '14' autofocus onChange='setDecimal(this)'step = '.0001' autocomplete='off' />
+						</p>
+						
+						<p>
+							<label for = 'ipw'>Impressions per web:</label>
+							<input type = 'number' name = 'ipw' placeholder = Enter value = '' maxlength = '14' onChange='setDecimal(this)'step = '.0001' autocomplete='off' />
+						</p>
+						
+						<p>
+							<label for = 'numacross'><b  id = 'bold' >*</b>Number Across: </label>
+							<input type= 'number' name = 'numacross' placeholder = Enter value='' maxlength = '14' onChange='setDecimal(this)'step = '.0001' autocomplete='off' />
+						</p>
+					
+							<p> <b id = 'bold' >* </b> If combo job add number across for ALL items</p>
+
+						<script>
+							function setDecimal(val) {
+								val.value = parseFloat(val.value).toFixed(4);
+							}
+						</script>
+
+						<input type ='hidden' name='IMPRESSION' value='IMPRESSION'/>
+						<br>
+						<div> 
+							<label for = 'submit'>
+								<button id = 'sub' type = 'submit' name = 'submit' value = 'Calculate'> Calculate </button>
+								<button id = 'sub' type = 'reset' name = 'reset' value = 'Clear'> Clear </button>
+							</label>
+						</div
+
+					</form>
+					";
+			} // endae impressionMainDisplay function 
+// MSI Main display	
+			function msiMainDisplay($title) {
+				echo
+					"
+					<form method = 'POST' action ='BOMCalcRevised.php'>
+						<h1 id = 'header1' >$title BOM</h1>
+						<p>
+							<b id = 'bold' > *</b> CANNOT BE ZERO! <b id = 'bold' >* </b>
+						</p>
+						<p>
+							<label for = 'web'><b  id = 'bold' >*</b>WEB (inches)<b  id = 'bold' >*</b>:</label>
+							<input type= 'number' name = 'web' placeholder = Enter value = '' maxlength = '14'  autofocus onChange='setDecimal(this)'step = '.0001'
+							autocomplete='off' />
+						</p>
+						<p>
+							<label for = 'numacross'><b style ='color:#F00;'>*</b>Number Across*: </label>
+							<input type= 'number' placeholder = Enter name = 'numacross' value = '' maxlength = '14' onChange='setDecimal(this)'step = '.0001' autocomplete='off' />
+						</p>
+						
+						<p id = 'paraB'> <b id = 'bold' >*</b>If combo job add number across for ALL items</p>
+						
+						<script>
+							function setDecimal(val) {
+								val.value = parseFloat(val.value).toFixed(4);
+							}
+						</script>
+						<input name='MSI' type='hidden' value='MSI'/>
+						<br>
+						<div> 
+							<label for = 'submit'>	
+								<button id = 'sub' type = 'submit' name = 'submit' value = 'Calculate'> Calculate </button>
+								<button id = 'sub' type = 'reset' name = 'reset' value = 'Clear'> Clear </button>
+							</label>
+						</div
+					</form>
+					";
+				
+			} // endae msiMainDisplay function
+// LBS Main display			
+			function lbsMainDisplay($title) {
+				include('LBSPage.php');
+			} // endae lbsMainDisplay function
+// MTR main display		
+			function mtrMainDisplay($title) {
+				echo "
+				<form method = 'POST' action ='BOMCalcRevised.php'>
+					<h1 id = 'header1' >$title BOM</h1>
+					<p >
+						<label for = 'numacross'>Number Across <b id = 'bold' >* </b>:</label>
+						<input type= 'number' name = 'numacross' placeholder = Enter value='' maxlength = '14' autofocus onChange='setDecimal(this)'step = '.0001'  autocomplete='off' />
+					</p>
+						<p id = 'paraB'> <b id = 'bold' >*</b>If combo job add number across for ALL items</p>
+					
+					
+					<script>
+						function setDecimal(val) {
+							val.value = parseFloat(val.value).toFixed(4);
+						}
+					</script>
+					
+					<input name='MTR' type='hidden' value='MTR'/>
+					<br>
+					<div> 
+						<label for = 'submit'>
+							<button id = 'sub' type = 'submit' name = 'submit' value = 'Calculate'> Calculate </button>
+							<button id = 'sub' type = 'reset' name = 'reset' value = 'Clear'> Clear </button>
+						</label>
+					</div
+				</form>
+					";
+			} // endae mtrMainDisplay function
+			
+
+		}
+	
+	?>	
+<!-- HTML --> 	
+	<h1 id = 'mainHeader1'> 
+		<a href = '?'> <img id = 'logo'src = 'http://admiralpkg.com/wp-content/uploads/2017/05/admirallogo_header-01-300x138.png'/> <br>
+	  BOM Calculator </a> 
+	</h1>
+	
+<!--	creating a link to go back to the API reference-->
+	<a id = 'back' href = "index.php" >&laquo;&laquo; Back To Main</a>
+	<br>
+<!--	defining form for user input of BOMCalcRevised.php-->
+	<form id = 'mainForm' enctype="multipart/form-data" autocomplete="off" method = "POST" action = "BOMCalcRevised.php">
+<!--		creating a drop downlist-->
+		<select name = selection onchange = "this.form.submit();" >
+<!--			options for dropdown list-->
+			<option value = "empty" disabled selected> SELECT A MEASUREMENT </option>	
+			<option value = 'bagsAndPouch' <?php if(isset($_POST['selection']) && $_POST['selection'] == "bagsAndPouch") echo "selected" ?> >BOM for Bags/Wickets/Zipper/Tape</option>
+			<option value = "mft" <?php if(isset($_POST['selection']) && $_POST['selection'] == "mft") echo "selected" ?> >BOM for MFT</option>
+			<option value = "m"   <?php if(isset($_POST['selection']) && $_POST['selection'] == "m") echo "selected" ?> >BOM for M (impressions)</option>
+			<option value = "msi" <?php if(isset($_POST['selection']) && $_POST['selection'] == "msi") echo "selected" ?> >BOM for MSI</option>
+			<option value = "lbs" <?php if(isset($_POST['selection']) && $_POST['selection'] == "lbs") echo "selected" ?> >BOM for LBS</option>
+			<option value = "mtr" <?php if(isset($_POST['selection']) && $_POST['selection'] == "mtr") echo "selected" ?> >BOM for MTR</option>
+		</select>	
+	</form>
+		
+	
+<!--SELECTION PORTION-->
+	<?php
+		//		conditional statements for the dropdown list selections
+			if(isset($_POST['selection'])){
+				
+				if ($_POST['selection'] == 'bagsAndPouch') {
+					bagsAndPouchMainDisplay("Bags and Pouch");
+				}
+				
+				if($_POST['selection'] == "mft"){
+					mftMainDisplay("MFT");
+				} // endae IF for selection == 'mft'
+
+				if($_POST['selection'] == "m"){
+					impressionMainDisplay("Impression");
+				} // endae IF for selection == 'm'
+
+				if($_POST['selection'] == "msi"){ 
+					msiMainDisplay("MSI");
+				} // endae IF for selection == 'msi'
+
+				if($_POST['selection'] == "lbs"){
+					lbsMainDisplay("LBS");
+				} // endae IF for selection == 'lbs'
+				
+				if ($_POST['selection'] == 'mtr') {
+					mtrMainDisplay("MTR");
+				} // endae IF for selection == 'mtr'
+				
+			} // endae OUTER IF
+		?>
+	
+	
+<!--FUNCTIONS and CALLING-->
+	<?php
+		if (!empty($_POST['BAGSPOUCH'])) {
+			$bpp = $bpb = $zipper = '';
+			if (!empty($_POST['submit'])) {
+// ALL INPUTS ARE FILLED
+				if (!empty($_POST['bagppack']) && !empty($_POST['bagpbox']) && !empty($_POST['bagrepeat']) && !empty($_POST['strips'])) {
+					$bpp =$_POST['bagppack'];
+					$bpb =$_POST['bagpbox'];
+					$repeat = $_POST['bagrepeat'];
+					$strips= $_POST['strips'];
+					$wickets = calcWickets($bpp); // calls calcBoxBOM function and assigns return value to $boxBom variable
+					$boxBOM = calcBox($bpb); // calls calcBoxBOM function and assigns return value to $boxBom variable
+					$zipper = calcZipper($strips, $repeat); // calling calcZipper and assigning return value to $zipper variable
+					displayWicketsTable($bpp, $wickets); // calls displayTable initailzing all parameters
+						// @param 1 --> $bpp
+						// @param 5 --> $wickets;
+					displayBOXTable($bpb, $boxBOM);
+					displayZipperTable($repeat, $strips, $zipper);
+					backFunction();
+				} // endae NESTED IF
+
+// WICKETS | BOX
+				else if (!empty($_POST['bagppack']) && !empty($_POST['bagpbox']) && empty($_POST['bagrepeat']) && empty($_POST['strips'])) {
+	//					&& empty($_POST['bagrepeat']) && empty($_POST['strips'])) {
+					$bpp =$_POST['bagppack'];
+					$wickets = calcWickets($bpp); // calls calcBoxBOM function and assigns return value to $boxBom variable
+					displayWicketsTable($bpp, $wickets); // calls displayTable initailzing all parameters
+						// @param 1 --> $bpp
+						// @param 5 --> $wickets;
+					$bpb =$_POST['bagpbox'];
+					$boxBOM = calcBox($bpb); // calls calcBoxBOM function and assigns return value to $boxBom variable
+					displayBOXTable($bpb, $boxBOM);
+					backFunction();
+				} // endae NESTED ELSE IF
+
+// WICKETS | ZIPPER
+				else if (!empty($_POST['bagppack']) && empty($_POST['bagpbox']) && !empty($_POST['bagrepeat']) && !empty($_POST['strips'])) {
+					$bpp =$_POST['bagppack'];
+					$wickets = calcWickets($bpp);
+					displayWicketsTable($bpp, $wickets);
+
+					$repeat = $_POST['bagrepeat'];
+					$strips= $_POST['strips'];
+					$zipper = calcZipper($strips, $repeat); // calling calcZipper and assigning return value to $zipper variable
+					displayZipperTable($repeat, $strips, $zipper);
+					backFunction();
+				} // endae NESTED ELSE IF
+
+// ZIPPER
+				else if (empty($_POST['bagppack']) && empty($_POST['bagpbox']) && !empty($_POST['bagrepeat']) && !empty($_POST['strips'])) {
+					$repeat = $_POST['bagrepeat'];
+					$strips= $_POST['strips'];
+					$zipper = calcZipper($strips, $repeat); // calling calcZipper and assigning return value to $zipper variable
+					displayZipperTable($repeat, $strips, $zipper);
+					backFunction();
+				} // endae NESTED ELSE IF
+
+// BOX | ZIPPER
+				else if (empty($_POST['bagppack']) && !empty($_POST['bagpbox']) && !empty($_POST['bagrepeat']) && !empty($_POST['strips'])) {
+					$bpb =$_POST['bagpbox'];
+					$boxBOM = calcBox($bpb); // calls calcBoxBOM function and assigns return value to $boxBom variable
+					displayBOXTable($bpb, $boxBOM);
+
+					$repeat = $_POST['bagrepeat'];
+					$strips= $_POST['strips'];
+					$zipper = calcZipper($strips, $repeat); // calling calcZipper and assigning return value to $zipper variable
+					displayZipperTable($repeat, $strips, $zipper);
+					backFunction();
+				} // endae NESTED ELSE IF
+
+// BOX
+				else if (empty($_POST['bagppack']) && !empty($_POST['bagpbox']) && empty($_POST['bagrepeat']) && empty($_POST['strips'])) {
+					$bpb =$_POST['bagpbox'];
+					$boxBOM = calcBox($bpb); // calls calcBoxBOM function and assigns return value to $boxBom variable
+					displayBOXTable($bpb, $boxBOM);
+					backFunction();
+				} // endae NESTED ELSE IF
+
+// WICKETS
+				else if (!empty($_POST['bagppack']) && empty($_POST['bagpbox']) && empty($_POST['bagrepeat']) && empty($_POST['strips'])) {
+					$bpp =$_POST['bagppack'];
+					$wickets = calcWickets($bpp);
+					displayWicketsTable($bpp, $wickets); 
+					backFunction();
+				} // endae NESTED ELSE IF
+
+				else if (empty($_POST['bagppack']) && empty($_POST['bagpbox']) && empty($_POST['bagrepeat']) && empty($_POST['strips'])) {
+					echo "<script> javascript:history.go(-1) </script>";
+				}
+
+				else if (!empty($_POST['bagppack']) && !empty($_POST['bagpbox']) && empty($_POST['bagrepeat']) || empty($_POST['strips'])) {
+					
+					echo "
+						<script>
+							alert('Number of Strips and Repeat Must be filled in Together!');
+							javascript:history.go(-1);
+						</script> ";
+				}
+				else {
+					echo "<script> javascript:history.go(-1) </script>";
+				}
+			}
+		} // endae if for bagsAndPouch
+			
+// MFT
+		else if (!empty($_POST['MFT'])) {
+			// assigns input value numacross to $numacross
+			$numacross= $_POST['numacross']; 
+			if ($numacross == 0) {
+	//					alert("NUMBER ACROSS");
+					echo "<script> javascript:history.go(-1) </script>";
+				}
+
+			else {
+				$bommft = calcMFT($numacross); // calls calcBOMInMFT function and assigns return value to $bommft
+				displayMFTTable($numacross, $bommft);
+			}
+		} // endae ELSE IF for MFT
+// IMPRESSIONS	
+		else if (!empty($_POST['IMPRESSION'])) {
+				$repeat = $_POST['bagrepeat']; // assigns input value of bagrepeat to $repeat;
+				// assigns input value ipw to $ipw
+				$ipw = $_POST['ipw']; 
+				// assigns input value numacross to $numacross
+				$numacross= $_POST['numacross'];
+			if (empty($numacross) || empty($ipw) || empty($repeat)) {
+				echo "<script> javascript:history.go(-1) </script>";
+			}
+			else {
+				$impression = calcImpressions($repeat, $numacross, $ipw);
+				displayImpressionsTable($repeat, $numacross, $ipw, $impression);
+			}
+		} // endae ELSE IF for IMPRESSION
+// MSI
+		else if (!empty($_POST['MSI'])) {
+				// assigns input value numacross to $numacross
+				$numacross= $_POST['numacross']; 
+				// assigns input value web to $web
+				$web = $_POST['web'];
+			if (empty($web) || empty($numacross)) {
+				echo "<script> javascript:history.go(-1) </script>";
+			}
+			else {
+				$msi = calcMSI($web, $numacross);
+				displayMSITable($web, $numacross, $msi);			
+			} // endae ELSE
+		} // endae ELSE IF for MSI
+// LBS
+		else if (!empty($_POST['LBS'])) {
+			$counter = $_POST['filmTracker'];
+			$yield = $_POST['yield']; 
+			$web = $_POST['web'];
+			// IF statement series for when there are more than one yield
+			if ($counter == 1) {
+				if (empty($yield)) {
+					echo "<script> javascript:history.go(-1) </script>";
+				}
+				else {
+					// assigns input value wghmft to $wgh
+					$unitLBS = calcLBS($web, $yield, $counter);
+					displayLBSTable($web, $yield, $counter, $unitLBS);
+				}
+			} 
+			else if ($counter == 2) {
+				$yield2 = $_POST['yield2'];
+				if (empty($yield) || empty($yield2)) {
+					echo "<script> javascript:history.go(-1) </script>";
+				}
+				else {
+					$unitLBS = calcLBS($web, $yield, $counter);
+					$unitLBS2 = calcLBS($web, $yield2, $counter);
+					$total = getTotal2($unitLBS, $unitLBS2);
+					displayLBSTable2($web, $yield, $yield2, $counter, $unitLBS, $unitLBS2, $total);
+				}
+			} 
+			else if ($counter == 3) {
+				$yield2 = $_POST['yield2'];
+				$yield3 = $_POST['yield3'];
+				if (empty($yield) || empty($yield2) || empty($yield3)) {
+					echo "<script> javascript:history.go(-1) </script>";
+				}
+				else {
+					$unitLBS = calcLBS($web, $yield, $counter);
+					$unitLBS2 = calcLBS($web, $yield2, $counter);
+					$unitLBS3 = calcLBS($web, $yield3, $counter);
+					$total = getTotal3($unitLBS, $unitLBS2, $unitLBS3);
+					displayLBSTable3($web, $yield, $yield2, $yield3, $counter, $unitLBS, $unitLBS2, $unitLBS3, $total);
+				}
+			} // endae NESTED ELSE IF
+			else if ($counter == 4) {
+				$yield2 = $_POST['yield2'];
+				$yield3 = $_POST['yield3'];
+				$yield4 = $_POST['yield4'];
+				if (empty($yield) || empty($yield2) || empty($yield3) || empty($yield4)) {
+					echo "<script> javascript:history.go(-1) </script>";
+				}
+				else {
+					$unitLBS = calcLBS($web, $yield, $counter);
+					$unitLBS2 = calcLBS($web, $yield2, $counter);
+					$unitLBS3 = calcLBS($web, $yield3, $counter);
+					$unitLBS4 = calcLBS($web, $yield4, $counter);
+					$total = getTotal4($unitLBS, $unitLBS2, $unitLBS3, $unitLBS4);
+					displayLBSTable4($web, $yield, $yield2, $yield3, $yield4, $counter, $unitLBS, $unitLBS2, $unitLBS3, $unitLBS4, $total);
+				}
+			} // endae NESTED ELSE IF
+		
+			
+		} // endae ELSE IF for LBS
+// MTR		
+		else if (!empty($_POST['MTR'])) {
+			$numAcross = $_POST['numacross'];
+			$unitMTR = calcMTR($numAcross);
+			displayMTRTable($numAcross, $unitMTR);
+		} // endae ELSE IF MTR
+		
+		
+	
+//////////////// FUNCTIONS ///////////////////////////////////
+	
+// ERROR/CHECK FUNCTIONS
+		function alert($flag) {
+				echo"<h1 style='color: #F00;'>$flag CANNOT BE EMPTY OR ZERO!</h1>";
+	//					echo "<p style='color:#FF0000;'> $flag CANNOT BE EMPTY OR ZERO!! </p>";
+			} // endae alert function
+	
+// Other FUNCTIONS
+		function backFunction() {
+			echo "<br><br> <a href = 'javascript:history.go(-1)' style='padding-top: 30px'>&laquo;&laquo; Back</a>";
+		}
+		
+///////// WICKETS ///////////////////
+		function calcWickets($bpp) {
+			if ($bpp != 0) {
+				$wickets  = 1000/$bpp; // computes wickets
+				return $wickets = number_format($wickets, 4); // formats wickets to the 4th decimal place and returns the value\
+			} // endae IF
+			else {
+				alert("BAGS PER PACK");
+
+			}
+		} // endae calcWickets function
+
+		function displayWicketsTable($bpp, $wickets) {
+				echo
+					"<p id = 'tableP' style = 'margin-top: 50px;'>Bags per Pack = $bpp <br></p>
+					<table cellpadding='10' cellspacing='10' border='4'> 
+						<tr>
+							<td> Wickets/Bands BOM:</td>
+							<td>$wickets</td> 
+						</tr>
+					</table>";
+				
+			} // endae displayTable function
+
+///////// BOX //////////////////////////
+		function calcBox($bpb) {
+			if ($bpb != 0) {
+				$boxBOM = 1000/$bpb; // computes $boxBOM
+				return $boxBOM = number_format($boxBOM, 4); // formats $boxBOM to the 4th decimale place and returns the value
+			} // endae IF
+			else {
+				alert("BAGS PER BOX");
+			}
+	} // endae calcBomBOX function
+
+		function displayBOXTable($bpb,$boxBOM) {
+			echo
+				"<p id = 'tableP' style = 'margin-top: 50px;'>Bags per Box = $bpb</p>
+				<table cellpadding='10' cellspacing='10' border='4'> 
+					<tr>
+						<td>Box BOM: </td>
+						<td>$boxBOM</td>
+					</tr> 
+				</table>";
+		} // endae displayTable function
+			
+///////// ZIPPER ///////////////////
+		function calcZipper($strips, $repeat) {
+			if ($strips != 0 || $repeat != 0) {
+				$zipper = ($repeat/12)*$strips; //	$zipper's value equls $repeat divided by 12 then mutliplied by $strips
+				return $zipper = number_format($zipper,4); // formats $zipper to the 4th decimal place and retuns the value
+			}
+			else {
+				echo "<script> javascript:history.go(-1) </script>";
+				alert("STRIPS AND REPEAT");	
+			}
+		} // endae calcZipper function
+
+		function displayZipperTable($repeat, $strips, $zipper) {
+				echo
+					"<p  id = 'tableP' style = 'margin-top: 50px;'>Bag repeat = $repeat <br> Strips per Bag = $strips </p>
+					<table cellpadding='10' cellspacing='10' border='4'>
+						<tr>
+							<td>Zipper BOM: </td>
+							<td>$zipper</td>
+						</tr>
+					</table>";
+			} // endae displayTable function
+			
+///////// MFT ///////////////////			
+		function displayMFTTable($numacross, $bommft) {
+			echo "<p  id = 'tableP'  style = 'margin-top: 50px;'> Number Across = $numacross</p> <br> <table cellpadding='10' cellspacing='10' border='4'> <tr><td> BOM for Order in MFT: </td><td> $bommft</td> </tr></table>";
+			echo "<br><br> <a href = 'javascript:history.go(-1)' style='padding-top: 30px'>&laquo;&laquo; Back</a>";
+		} // endae displayMFTTable function
+
+		function calcMFT($numacross) {
+			if ($numacross != 0) {
+				$bommft = 1/$numacross; // computation for bommft
+				return $bommft = number_format($bommft, 4); // reformats $bommft to the 4th decimal and assigns it to $bommft to be returned
+			} // endae IF
+			else {
+				echo "<script> javascript:history.go(-1) </script>";
+				alert("NUMBER ACROSS");
+			}
+	} // endae bomInMFT function
+	
+	
+///////// IMPRESSION //////////////
+		function calcImpressions($repeat, $numacross, $ipw) {
+			if ($numacross != 0 && $ipw != 0) {
+				$impression = $repeat/12/($numacross*$ipw); // computes for impressions
+				return $impression = number_format($impression,4); // reformats to the 4th decimal and stores into impressions to be returned
+			}
+			else {
+				echo "<script> javascript:history.go(-1) </script>";
+				alert("NUMBER ACROSS AND IPW");
+			}
+		} // endae calcImpressions function
+
+		function displayImpressionsTable($repeat, $numacross, $ipw, $impression) {
+				echo 
+					"<p id = 'tableP' style = 'margin-top: 50px;' >Repeat = $repeat <br> Impressions per Web = $ipw<br> Number Across = $numacross </p>
+					<table cellpadding='10' cellspacing='10' border='4'> 
+						<tr>
+							<td> BOM for Order in IMPRESSIONS(M): </td>
+							<td> $impression</td> 
+						</tr>
+				</table>";
+				echo "<br><br> <a href = 'javascript:history.go(-1)' style='padding-top: 30px'>&laquo;&laquo; Back</a>";
+			} // endae displayImpressionsTable function
+	
+///////// MSI ///////////////////////
+		function calcMSI($web, $numacross) {
+				if ($web != 0 && $numacross != 0) {
+					$msi = 83.33/($web*$numacross)/1000; // computation for MSI
+					return $msi = number_format($msi,4); // formats output to the 4th decimal and stores into msi to be returned
+				} // enade IF
+				else {
+					echo "<script> javascript:history.go(-1) </script>";
+					alert("WEB AND NUMBER ACROSS");
+				}
+			} // endae calcMSI function
+
+		function displayMSITable($web, $numacross, $msi) {
+			echo 
+				"<p id = 'tableP' style = 'margin-top: 50px; font-weight: bold;'> WEB = $web <br> Number Across = $numacross</p>
+				<table cellpadding='10' cellspacing='10' border='4'> 
+					<tr>	
+						<td> BOM for Order in MSI: </td>
+						<td> $msi</td> 
+					</tr>
+				</table>";	
+			echo "<br><br> <a href = 'javascript:history.go(-1)' style='padding-top: 30px'>&laquo;&laquo; Back</a>";
+		} // endae IF
+	
+/////////// LBS ////////////////////
+		function calcLBS($web, $yield, $counter) {
+			// repeat should never change
+			$repeat = 12;
+			// var web = user input
+			if ($yield != 0) {
+				$unitLBS = (($web * $repeat) / $yield)*1000;
+				return $unitLBS;
+			} 
+			else {
+				echo "<script> javascript:history.go(-1) </script>";
+			}
+		} // endae calcLBS
+// LBS Yield Total
+			function getTotal2($yield, $yield2) {
+				$total = $yield + $yield2; 
+				// $total = number_format($total, 4);
+				return $total;
+			}
+			function getTotal3($yield, $yield2, $yield3) {
+				$total = $yield + $yield2 + $yield3;
+				// $total = number_format($total, 4);
+				return $total;
+			}
+			function getTotal4($yield, $yield2, $yield3, $yield4) {
+				$total = $yield + $yield2+ $yield3 + $yield4; 
+				// $total = number_format($total, 4);
+			return $total;
+		}
+// LBS1 Disiplay
+		function displayLBSTable($web, $yield, $counter, $unitLBS) {
+			$OneDivided = 1/$unitLBS;
+			echo  "
+			<p id = 'tableP' style = 'margin-top: 50px;'> Film Size = $web</p>
+			<p id = 'tableP' style = 'margin-top: 10px;'> Yield = $yield</p>
+			<p id = 'tableP' style = 'margin-top: 10px;'> # of Film(s) = $counter</p>
+
+				<table cellpadding='10' cellspacing='10' border='2'> 
+					<tr>
+						<td> BOM for Order in LBS: </td>
+						<td>".number_format($unitLBS,4)."</td>
+					</tr>
+					<tr> 
+						<td> BOM QTY: </td>
+						<td>".number_format($OneDivided,4)."</td>
+					</tr>
+				</table>";
+			echo "<br><br> <a href = 'javascript:history.go(-1)' style='padding-top: 30px'>&laquo;&laquo; Back</a>";
+	} // endae displayLBSTable function
+// LBS2 Display
+		 // Display function table for when element yield is greater than one
+			function displayLBSTable2($web, $yield, $yield2, $counter, $unitLBS, $unitLBS2, $totalYield) {
+				$OneDivided = 1/$totalYield;
+				echo  "
+				<p id = 'tableP' style = 'margin-top: 50px;'> Film Size = $web</p>
+				<p id = 'tableP' style = 'margin-top: 10px;'> Yield 1 = $yield</p>
+				<p id = 'tableP' style = 'margin-top: 10px;'> Yield 2 = $yield2 </p>
+				<p id = 'tableP' style = 'margin-top: 10px;'> # of Film(s) = $counter</p>
+
+					<table cellpadding='10' cellspacing='10' border='2'> 
+						<tr>
+							<td> Yield 1 LBS/MFT: </td>
+							<td> ".number_Format($unitLBS, 4)."</td>
+						</tr>
+						<tr>
+							<td> Yield 2 LBS/MFT: </td>
+							<td>".number_format($unitLBS2, 4)."</td>
+						</tr>
+						<tr>
+							<td> Total Yield LBS/MFT: </td>
+							<td>".number_format($totalYield, 4)."</td>
+						</tr>
+						<tr> 
+							<td> BOM QTY: </td>
+							<td> ".number_format($OneDivided,4)." </td>
+						</tr>
+					</table>";
+				echo "<br><br> <a href = 'javascript:history.go(-1)' style='padding-top: 30px'>&laquo;&laquo; Back</a>";
+			} // endae displayLBSTable2 function
+// LBS3 Display
+			function displayLBSTable3($web, $yield, $yield2, $yield3, $counter, $unitLBS, $unitLBS2, $unitLBS3, $totalYield) {
+				$OneDivided = 1/$totalYield;
+				echo  "
+				<p style = 'margin-top: 50px;'> Film Size = $web</p>
+				<p style = 'margin-top: 10px;'> Yield 1 = $yield</p>
+				<p style = 'margin-top: 10px;'> Yield 2 = $yield2 </p>
+				<p style = 'margin-top: 10px;'> Yield 3 = $yield3 </p>
+				<p style = 'margin-top: 10px;'> # of Film(s) = $counter</p>
+
+					<table cellpadding='10' cellspacing='10' border='2'> 
+						<tr>
+							<td> Yield 1 LBS/MFT: </td>
+							<td> ".number_Format($unitLBS, 4)."</td>
+						</tr>
+						<tr>
+							<td> Yield 2 LBS/MFT: </td>
+							<td>".number_format($unitLBS2, 4)."</td>
+						</tr>
+						<tr>
+							<td> Yield 3 LBS/MFT: </td>
+							<td>".number_format($unitLBS3, 4)."</td>
+						</tr>
+						<tr>
+							<td> Total Yield LBS/MFT: </td>
+							<td>".number_format($totalYield, 4)."</td>
+						</tr>
+						<tr> 
+							<td> BOM QTY: </td>
+							<td>".number_format($OneDivided,4)."</td>
+						</tr>
+					</table>";
+				echo "<br><br> <a href = 'javascript:history.go(-1)' style='padding-top: 30px'>&laquo;&laquo; Back</a>";
+			} // endae displayLBSTable3 function
+// LBS4 DIsplay
+			function displayLBSTable4($web, $yield, $yield2, $yield3, $yield4, $counter, $unitLBS, $unitLBS2, $unitLBS3, $unitLBS4, $totalYield) {
+				$OneDivided = 1/$totalYield;
+				echo  "
+				<p id = 'tableP' style = 'margin-top: 50px;'> Web = $web</p>
+				<p id = 'tableP' style = 'margin-top: 10px;'> Yield 1 = $yield</p>
+				<p id = 'tableP' style = 'margin-top: 10px;'> Yield 2 = $yield2 </p>
+				<p id = 'tableP' style = 'margin-top: 10px;'> Yield 3 = $yield3 </p>
+				<p id = 'tableP' style = 'margin-top: 10px;'> Yield 4 = $yield4 </p>
+				<p id = 'tableP' style = 'margin-top: 10px;'> # of Film(s) = $counter</p>
+				
+
+					<table cellpadding='10' cellspacing='10' border='2'> 
+						<tr>
+							<td> Yield 1 LBS/MFT: </td>
+							<td> ".number_Format($unitLBS, 4)."</td>
+						</tr>
+						<tr>
+							<td> Yield 2 LBS/MFT: </td>
+							<td>".number_format($unitLBS2, 4)."</td>
+						</tr>
+						<tr>
+							<td> Yield 3 LBS/MFT: </td>
+							<td>".number_format($unitLBS3, 4)."</td>
+						</tr>
+						<tr>
+							<td> Yield 4 LBS/MFT: </td>
+							<td>".number_format($unitLBS4,4)."</td>
+						</tr>
+						<tr>
+							<td> Total Yield LBS/MFT: </td>
+							<td>".number_format($totalYield, 4)."</td>
+						</tr>
+						<tr> 
+							<td> BOM QTY: </td>
+							<td> ".number_format($OneDivided,4)."</td>
+						</tr>
+						
+					</table>";
+				echo "<br><br> <a href = 'javascript:history.go(-1)' style='padding-top: 30px'> &laquo;&laquo; Back</a> ";
+			} // endae displayLBSTable4 function
+
+//////////// MTR ////////////////////
+		function calcMTR($numAcross) {
+			if ($numAcross != 0) {
+				$unitMTR = (39.397/12/$numAcross/1000);
+				return $unitMTR = number_format($unitMTR, 4);
+			} // endae IF
+			else {
+				$unitMTR = 0;
+				echo "<script> javascript:history.go(-1) </script>";
+			} // endae ELSE
+		}
+	
+		function displayMTRTable($numAcross, $unitMTR) {
+			echo  "<p  id = 'tableP' style = 'margin-top: 50px;'>Number Across = $numAcross</p>
+				<table cellpadding='10' cellspacing='10' border='2'> 
+					<tr>
+						<td> BOM for Order in MTR: </td>
+						<td> $unitMTR</td>
+					</tr>
+				</table>";
+			echo "<br><br> <a href = 'javascript:history.go(-1)' style='padding-top: 30px; text-decoration:none; font-size=20px;'>&laquo;&laquo; Back</a>";
+		}
+	?>
+	
+		
+	<br><br>
+	<div id = 'divID' >
+		<p>
+			<b> Other Resources </b>
+		</p>
+		
+		
+	<label id = 'links'>
+		<a href = 'RollLengthCalculator.php' > Roll Length</a> 
+	</label>
+	<label id = 'links' >
+		<a href = 'conversions2.php' > Conversions</a> 
+	</label>
+	<label id = 'links'> 
+		<a href = 'corrlayouts.php' > Box Layouts</a> 
+	</label>
+		
+	</div>
+</body>
+</html>

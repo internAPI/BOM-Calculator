@@ -1,0 +1,246 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Roll Length Calculator</title>
+		
+<link href="Styles/RollLengthCalculatorStyle.css" rel="stylesheet" type="text/css">
+</head>
+
+<body id = 'mainBody'>
+	<h1 id = 'header1'>
+		<a id='headerLink' href = '?'> 
+		<img id = 'logo'src = 'http://admiralpkg.com/wp-content/uploads/2017/05/admirallogo_header-01-300x138.png'/> <br>	
+			Roll Length Calculator
+		</a>
+	</h1>
+	
+	<a id = 'back' href = "index.php">&laquo;&laquo; Back To Main</a>
+	<br><br>
+	<div>
+		<table id = 'tblLine'  ><tr><td ></td></tr></table>
+	</div>
+	
+	<div id = 'footageDiv'>
+		<h2 id = 'header2'>For Finding the Footage Calculator </h2>
+		<p id = 'footP1'>	
+			<IMG id = 'img' SRC='http://www.handymath.com/webimages/roll2.gif' ></IMG>
+		</p>
+		<table id='mainTable' >
+			<tbody id = 'mainTableBody'>
+				<tr>
+					<td>
+						<table id = 'mainInner' >
+							<tbody id = 'mainInnerBody'>
+								<form method = 'POST' action = 'RollLengthFootageFilled.php' >
+									<tr id = 'mainRow'>
+										<th id = 'tblHeader'>Outside Diameter
+										</th>
+										<td class = 'main' >
+											<input name="outDiam" onChange='setDecimal(this);' step = '.0001' maxlength="15" type="number" autocomplete="off" value="">
+										</td>
+										<td class = 'main' id = 'lastCell' >inches 
+										</td>
+									</tr>
+									
+									<tr id = 'mainRow'>
+										<th id = 'tblHeader'>Thickness of Material
+										</th>
+										<td class = 'main' >
+											<input name="thickness" onChange='setDecimal(this);' step = '.0001' maxlength="15" autocomplete="off" type="number" value="">
+										</td>
+										<td  class = 'main' id = 'lastCell' > gauge 
+										</td>
+									</tr>
+									
+									<tr id = 'mainRow'>
+										<th id = 'tblHeader'> Center Hole Diameter
+										</th>
+										<td class = 'main' >
+											<input name="innerDiamSel" onChange='setDecimal(this);' list='innerDiamSelect' autocomplete="off" step = '.0001' maxlength="15" type="number" value="">
+<!--											&laquo; OR &raquo;-->
+											<datalist class  = 'mainSelect' id = 'innerDiamSelect'  >
+												<option  value = '7.22'> 6" Thick </option>
+												<option  value = '7'> 6" Thin </option>
+												<option  value = '3'> 3" Thin </option>
+											</datalist>
+										</td>
+										<td class = 'main'  id = 'lastCell'> inches </td>
+									</tr>
+									
+									<tr id = 'mainRow'>
+										<th id = 'tblHeader'>Length of Material
+										</th>
+										<td class = 'main' id = 'tbCalc'>To be Calculated</td>
+										<td class = 'main' id = 'lastCell' > mft 
+										</td>
+									</tr>
+									
+									<tr id = 'mainRow'>
+										<th id = 'tblHeader'>Roll Width 
+										</th>
+										<td class = 'main' >
+											<input name="rollWidth" onChange='setDecimal(this);' autocomplete="off" step = '.0001' maxlength="15" type="number" value="">
+										</td>	
+										<td class = 'main' id = 'lastCell' >inches
+										</td>
+									</tr>
+									
+									<tr id = 'mainRow'>
+										<th class = 'main' id = 'tblHeader'>Material
+										</th>
+										<td class = 'main' id = 'dropdown'>
+											<select name ='material'>
+												<option value = 0 selected> SELECT MATERIAL </option>
+												<option value = 0.050>Polyester</option>
+												<option value = 0.038>Nylon</option>
+												<option value = 0.033>Polypropylene/Poly</option>
+												<option value = 0.034>HDPE</option>
+												<option value = 0.038>Laminations</option>
+												<option value = 0.097> Aluminum</option>
+											</select>
+										</td>	
+										<td class = 'main'>
+										</td>
+									</tr>
+									
+									<tr id = 'lastRow' >
+										<th colSpan = '3'>
+											<table>
+												<tbody>
+													<tr>
+														<td>
+															<button class = 'submit' type = 'submit' name = 'submit' value = 'CalcFOOT' > Calculate </button>
+														</td>
+														<td>
+														  <button class = 'submit' name="submit" type="reset" value="Reset"> Reset </button>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</th>
+									</tr>
+									
+								</form>
+							</tbody>
+						</table>
+						
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		
+	</div>
+	
+	<div>
+		<table id = 'tblLine'><tr><td></td></tr></table>
+	</div>
+	
+	<div id = 'ODDiv'>
+		<h2 id = 'header2'> For Finding the O.D. Calculator </h2>
+		<a id = 'back' href = "index.php">&laquo;&laquo; Back To Main</a>
+		<p id = 'footP1'>
+			<IMG id = 'img' SRC='http://www.handymath.com/webimages/roll2.gif'>	
+		</p>
+		<table id = 'mainTable'>
+			<tbody>
+				<tr>
+					<td>
+						<table id = 'mainInner'>
+							<tbody id = 'mainInnerBody'>
+								<form method = 'POST' action = 'RollLengthOutDiamFilled.php' >
+									<tr id = 'mainRow'>
+										<th  id = 'tblHeader'>Outside Diameter
+										</th>
+										<td class = 'main' id = 'tbCalc'>To be Calculated
+
+										</td>
+										<td class = 'main'id = 'lastCell'> inches </td>
+									</tr>
+									<tr id = 'mainRow'>
+										<th id = 'tblHeader' >Thickness of Material
+										</th>
+										<td class = 'main'>
+											<input name="thickness" onChange='setDecimal(this);' step = '.0001' autocomplete = 'off' type="number" maxlength="15" value="">
+										</td>
+										<td class = 'main' id = 'lastCell'> gauge </td>
+									</tr>
+									<tr id = 'mainRow'>
+										<th id = 'tblHeader'>Center Hole Diameter
+										</th>
+										<td class = 'main'>
+											<input name="innerDiamSel" onChange='setDecimal(this);' autocomplete="off" step = '.0001' maxlength="15" list='innerDiamSelect' type="number" value=""/>
+											<datalist class  = 'mainSelect' id = 'innerDiamSelect' >
+<!--												<option  selected > Select Diam </option>-->
+												<option  value = '7.22'> 6" Thick </option>
+												<option  value = '7'> 6" Thin </option>
+												<option  value = '4'> 3" Thin </option>
+											</datalist>
+										</td>
+										<td class = 'main' id = 'lastCell'> inches </td>
+									</tr>
+									<tr id = 'mainRow'>
+										<th id = 'tblHeader'>Length of Material
+										</th>
+										<td class = 'main'>
+											<input name="length" onChange='setDecimal(this);' step = '.0001' type="number" autocomplete="off"  maxlength="15" value="">
+										</td>
+										<td class = 'main' id = 'lastCell'> feet </td>
+									</tr>
+									<tr id = 'lastRow'>
+										<th colspan="3">
+											<table>
+												<tbody>
+													<tr>
+														<td >	
+															<button type = 'submit' name = 'submit' style = 'font-weight: bold; font-size: 15px;' value = 'CalcOD' >
+																Calculate	
+															</button>
+														</td>
+														<td >
+															<button name="submit" style="font-size: 15px; font-weight: bold;" type="reset" value="Reset"> Reset </button>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</th>
+									</tr>
+								</form>
+							</tbody>
+						</table>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<br>
+	<br>
+	
+	
+	<script>
+		function setDecimal(val) {
+			val.value = parseFloat(val.value).toFixed(4);
+		}
+	</script>
+	
+	
+	<div>
+		<table id = 'tblLine'><tr><td></td></tr></table>
+	</div>
+	
+	
+	<br><br><br><br>
+	<div id = 'linkDiv'>
+		<label id = 'links'>
+			<a id = 'bomID' href = 'BOMCalcRevised.php' > BOM Calculator</a> 
+		</label>
+		<label id = 'links' >
+			<a href = 'conversions2.php' > Conversions</a> 
+		</label>
+		<label id = 'links'> 
+			<a href = 'corrlayouts.php' > Box Layouts</a> 
+		</label>
+	</div>
+	
+</body>
+</html>

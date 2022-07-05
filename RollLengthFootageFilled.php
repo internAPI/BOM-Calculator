@@ -1,0 +1,162 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Roll Length Calculator</title>
+	
+	
+	
+<link href="Styles/RollLengthCalculatorStyle.css" rel="stylesheet" type="text/css">
+</head>
+
+<body id = 'mainBody' >
+	
+	<?php include('RollLengthComputations.php');?>
+	
+	
+	<h1 id = 'header1'>Roll Length Calculator Footage Results </h1>
+	<a id = 'back' href = "index.php"  >&laquo;&laquo; Back To Main</a>
+		<br><br>
+	<div>
+		<table id = 'tblLine' ><tr><td></td></tr></table>
+	</div>
+	<br><br>
+	
+	<table id = 'mainTable'>
+		<tbody>
+			<tr>
+				<td>
+					<table id = 'mainInner'>
+						<tbody id = 'mainInnerBody'>
+							<tr class = 'main' id = 'mainRow'>
+								<th id = 'tblHeader'>Outside Diameter
+								</th>
+								<td class = 'main' style = '
+									<?php if (ODetThickErr($outDiam, $thickness) == true || ODetIDErr($outDiam, $innerDiam) == true) {
+											echo 'border: ridge #F00; color: #F00;';} // make border and font red when error occurs
+									?>							
+								'>
+									<?php
+										echo $outDiam; // prints out the user input of outDiam
+									?>
+								</td>
+								<td class = 'main' id = 'lastCell'> inches </td>
+							</tr>
+							<tr id = 'mainRow'>
+								<th id = 'tblHeader'>
+									<font size="3">Thickness of Material</font>
+								</th>
+								<td class = 'main' style = '
+									<?php if (ODetThickErr($outDiam, $thickness) == true) {
+											echo 'border: ridge #F00; color: #F00;';} // make border and font red when error occurs
+									?>							
+								'>
+									<?php
+										echo $thickness; // prints out the user input of thickness
+									?>
+
+								</td>
+								<td class = 'main' id = 'lastCell'> gauge </td>
+							</tr>
+							<tr id = 'mainRow'>
+								<th id = 'tblHeader'>Center Hole Diameter
+								</th>
+								<td class = 'main' style = '
+									<?php 
+										if (ODetIDErr($outDiam, $innerDiamSel) == true) {
+											echo 'border: ridge #F00; color: #F00;';} // make border and font red when error occurs
+									?>
+								'>
+									<?php
+										echo $innerDesc;
+									 // prints out the user input of innerDiam
+										?>
+								</td>
+								<td class = 'main' id = 'lastCell'> inches </td>
+							</tr>
+							<tr id = 'mainRow'>
+								<th id = 'tblHeader'>Length of Material
+								</th>
+								<td id = 'doubleCell'>
+									<table id = 'doubleTable1'>
+										<tr>
+											<td id = 'firstCellDouble'>
+												<?php echo $length = number_format($length, 4); // prints out the user input of length
+												?> 
+											</td>
+										</tr>
+										<tr>
+											<td id = 'lastCellDouble'>
+											<?php echo $mft = number_format($mft, 4);
+											?>
+											</td>
+										</tr>
+									</table>
+								</td>
+								<td id = 'lastCell' class='main'>
+									<table id = 'doubleTable2'>
+										<tr>
+											<td id = 'firstCellDouble'> feet </td>
+										</tr>
+										<tr>
+											<td class = 'main' id = 'lastCellDouble'> mft </td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							
+							
+								<?php
+									if (!empty($outDiam) && !empty($innerDiamSel) && !empty($thickness) && !empty($material) && !empty($rollWidth)) {
+										printEstimated(ceil($estimated)); // print out the estimated value strictly when all inputs are filled
+									}
+									
+								?>
+							
+							
+							<tr id = 'lastRow'>
+								<th colspan="3">
+									<table >
+										<tbody>
+											<tr>
+												<td>
+													<button id='goBack' type= 'button' onClick="goBack()"> Back </button>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</th>
+							</tr>
+						</tbody>
+					</table>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+		<br><br>
+	<div>
+		<table id = 'tblLine'><tr><td height="7"></td></tr></table>
+	</div>
+	<br><br>
+
+	<script> 
+		function goBack() {
+			javascript:history.go(-1);
+		}
+	</script>
+	<br><br><br><br>
+	<div id = 'linkDiv'>
+		<label id = 'links'>
+			<a id = 'bomID' href = 'BOMCalcRevised.php' > BOM Calculator</a> 
+		</label>
+		<label id = 'links' >
+			<a href = 'conversions2.php' > Conversions</a> 
+		</label>
+		<label id = 'links'> 
+			<a href = 'corrlayouts.php' > Box Layouts</a> 
+		</label>
+	</div>
+	
+	
+</body>
+</html>

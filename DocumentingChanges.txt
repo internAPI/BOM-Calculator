@@ -1,0 +1,356 @@
+Syntax:
+	- File Name(s) .php
+		short description change
+			--> indepth description
+				--> More description
+			--> indepth description
+	NOTATION ---- $BOMUnit.php : 'Wicket.php', 'Box.php', 'Zipper.php', 'MFT.php', 'Impressions.php', 'MSI.php', 'LBS.php'
+	NOTATION ---- $BOMUnitComputation.php : 'WicketComputation.php', 'BoxComputation.php', 'ZipperComputation.php', 'MFTComputation.php', 'ImpressionsComputation.php', 'MSIComputation.php', 'LBSComputation.php'
+	- Varible Naming Convention
+		--> Camel case for the most part
+			--> ex: for the variable Delta Alpha ==> deltaAlpha
+___________________________________________________________________________________________________________________________________________________________________________________________________________
+	
+	
+	- BOMCalcRevised Folder
+		deprecated
+			--> calc.php file is no longer being used
+				--> reasoning: creates too much confusion logically, too scrambled when reading, and unorganize in general
+				--> One page had all the functions which came be very overwhelming when reading it, compiling it, and debugging it
+				--> Sort of approaching it in an OOD way, each $BOMUnit has there own computation, thus made separate files for each computation
+			--> BomCalc.php || BomCalc2.php is no longer being used
+				--> BomCalcRevised.php is the name for now. Can change the name to something more relevant when time comes
+					--> extensive changes have been made as you read more below.
+				--> Better to have a backup file off of something that works than to change the original and have a none-working file.	
+				--> references pointing to Bomcalc.php || BomCalc2.php has been changed to BomCalcRevised.php
+			--> As of 2/22/2019
+				--> Computations Folder holding all $BOMUnitsComputations.php are no longer being used
+				--> All $BOMUnits.php files are no longer being used
+			
+	
+	- index.php
+		BOM Calculator
+			--> divided $BOMUnits into their own php files
+				--> each unit had their own php computation files
+				--> computation files are under one folder called Computations (deprecated as of 2/22/2019)
+					--> $BOMUnitCompuation.php (deprecated as of 2/22/2019) was the name of each file
+			--> reasoning: From the previous version, the if and else statements in the source code were running into one another thus creating errors that were not relevant
+
+	- All the files
+		Go To API link
+			--> '<a href = "index.php">Go To API</a>'
+			--> allows for user to go back to the API WEB TOOLS (index.php) page
+		Go To Main Link (2/22/2019)
+			--> changed 'Go To API' to Go To Main
+		Indentation 
+			--> moved around a lot of the source code to make it visually easier to read
+			--> adjusted indents of the code
+			--> Especially in the nested areas such as tables, if/else statements, nested html tags
+		Comments
+			--> added extensive comments to help reader understand the code and functionality
+			--> commented most end brackets of if/else 
+		Margin-left
+			--> added margin 50px; 
+			--> Just enough to not hug the left side of the page soo much. Give some cursor room
+
+	- conversions.php (deprecated as of 2/22/2019) 
+		Added Styling
+			--> style = 'padding-top: 25px'
+				--> creates better alignment with Value*: input field
+			--> style="margin-top: 0%; margin: auto"
+				--> Prevent any type of wrapping
+				--> applied to the table 
+					--> fixed position no matter how big/small the window size is
+				--> added a div tag 
+					--> style = 'width: 960px;' to help fixate the table
+				--> applied to the second form tag
+					--> form tag for the user inputs
+					--> help keep this portion of the form fixated like the table regardless of the window size
+		moved the Go To API href link below the header
+
+	- corrlayouts.php
+		Missing Body
+			--> added the missing-paired body tag
+		
+	- rollength.php
+		Radio checked
+			--> implemented feature where if a radio button was selected, it would fill in the selected circle rather than disappearing
+		ReDesign (2/22/2019)
+			--> Redesigned the form submission action
+			--> Instead of submitting to the process.php (deprecated as of 2/22/2019)
+				--> the form will submit to itself
+			--> PHP tags
+				--> Will hold the respective echos and computations 
+			--> added a dummy input that held an argument, which was hardcoded, to allow for a submissions to itself
+
+
+	- $BOMUnit.php (deprecated as of 2/22/3019)
+		autofocus
+			--> feature that specifies that an <input> element should automatically get focus when the page loads
+	
+	- $BOMUnitCompuation.php (deprecated as of 2/22/2019)
+		Creation
+			--> created to separate the duties that were invovled
+			--> this allows for a chance of resuability
+		Go back link
+			--> "<a href = 'javascript:history.go(-1)' style="padding-top: 30px"> Back to $BOMUnit </a>"
+			--> allows user to go back to previous page without navigating back from selection of choices
+		alert Error message
+			--> creates a JS alert that lets user know an error occurred
+			--> this alert will create a pop-up window that expains to user what went wrong
+			--> This allows for resuability as well and less changes if needed
+		Go TO API Link
+			--> had to change the link from the directory above it: '../index.php'
+			--> due to the fact that all computations were in a differnt folder
+	
+	- BOMCalcRevised.php, $BOMUnits.php (deprecated as of 2/22/2019), $BOMUnitsComputation.php (deprecated as of 2/22/2019)
+		style.css
+			--> <link href="style.css" rel="stylesheet" type="text/css">
+			--> linked the style.css file to the BOMCalcRevised
+			--> looks cleaner when looking at source code
+
+	- BOMCalcRevised.php
+		"include" function
+			--> links php files to the page when, in this instance, an action or condition was met
+			--> This instance the $BOMUnit.php files were included
+		Updated layout and redesigned. (2/22/2019)
+			--> REMOVED THE INCLUDE FUNCTION!!
+			--> Instead of the form submitting to somewhere else, the form can now submit to itself
+			--> the PHP tags will have all the computations and echo statements. 
+			--> All the computations and echos are within their respective functions
+				--> Use of functions make the code cleaner and easier on the eyes. 
+				--> Will add more comments as I tweak more and more
+		Wish-List (2/22/2019)
+			--> To make sure the functions and their formulas are correct
+			--> Iterate through every use-case to assure there are minimized mistakes
+			--> To ask around more about how others feel about the BOM calc
+
+
+	- All Files except index.php
+		method = "POST"
+			--> some files had method - "GET"
+			--> Changing from GET to POST is more secure. 
+			--> POST hides it from the URL this mitigating an outsider to obtain any info about the code
+		bolden 'other Resources'
+			--> more aestheic than anything
+			--> <b><p>Other Resources</p></b>
+
+	- Conversions2.php
+		redesign layout (2/22/2019)
+			--> Similar to the BOM
+				--> User will now have two drop down selections
+					--> From unit
+					--> To Unit
+				--> Based on the two units the respective conversion will will appear
+			--> Main difference is all the php is in one file
+			--> Was able to design it so the page wouldn't have to reload to another page. 
+				--> The form submitted to itself essentially
+				--> This was done by adding a 'dummy' input that had a hard coded value which allowed for the $_POST to add it to the array when the form submitted
+				--> This also gave gateway for the redesign of the BOMCalc and Roll Length calculator. 
+				--> Though the bulk of the code is in one file, most of the code is within functions and are collapsable or expandable
+					--> Are organized togather based on the function. 
+					--> Much easier to read instead of opening x amount of files and trying to keep track of those files
+				--> PURPOSE of redesign, to make easier and more userfriendly style. 
+			--> Still considering about putting the previous chart in but i'm not sure 
+			
+	- All Files except index.php, boxlayout.php
+		Accepting Decimal Inputs
+			--> onChange='setDecimal(this)'step = '.001' 
+				--> attributes have been added to the respective inputs that could potentially take in decimals
+			--> function setDecimal(val) {val.value = parseFloat(val.value).toFixed(3);}
+				--> inisde script tags and a function to allow the parsing of float values
+			--> maxlength (2/22/2019)
+				--> Increased the max length from 10 to 14
+				--> compensate for the default decimal layout previously implemented
+				--> More room for the whole number digits. 
+--------------------------------------------------------------------------------------- 2/26/2019 --------------------------------------------------------------------------------------------------------------------------------
+	- All Files
+		Notes
+			--> All newer notes will be updated from here on down.
+			--> Above notes may still apply where needed
+			--> All deprecated files will no longer apply
+		NewFolder
+			--> called RevisedBOMVersion2. This will store all of the updated changes and deprecated files and codes. 
+			--> DeprecatedFiles Folder
+				--> Stores all the deprecated files as of 2/26/2019
+				--> includes all $BOMUnits Folder
+					--> Contains all $BOMUnits files
+				--> $BOMUnitsComputations Folder
+					--> Contains all $BOMUnitsComputation files 
+				--> concalc.php
+				--> conversions.php
+				--> process.php
+					--> This was the computations for the RollLength.php page
+		BOMCalcRevised.php
+			--> Specifically in BOM for LBS
+				--> previous formula was incorrect
+				--> ((web * 12) / yield) * 1000 is the updated formula as of 2/26/2019
+				--> included the DummyPHP.php 
+					--> This name will be changed later
+				--> Implemented the allowance of more than one yield.
+				--> The need for the DummyyPHP.php was a necessity in order to carry out this task
+					--> reasoning... There confusion of single and double quotations could not allow the compiler to be error-free
+			--> BOM for MTR
+				--> Added a new BOM selection that would allow for MTR (Meters)
+		href Back to Main
+			--> removed the text-decoration on all files
+	- Wish List (2/26/2019)
+		keep Form contents when going back
+			--> the form once submitted goes away and thus removing all contents when going back
+			--> try to keep the form info when even after submitted
+		Multiple Conversions
+			--> Conversions2.php 
+				--> Would like to implement that does multiple conversions at once instead of one at a time
+				--> perhaps to do this we change the onchange='this.form.submit();' t othe first then the next drop down selection will have the appropriate conversion units (removes the a-like ones)
+				--> this would make multiple conversions a possibility
+		responsive and active sidebar
+			--> perhaps a side bar that is easily accessible. Feel like the footer links are not as used. Personally that is
+				--> For others that's exactly where they might like it. 
+		Color
+			--> perhaps a bit more styling and coloring. I'm just dancing around the idea at the moment
+---------------------------------------------------------- 03/07/2019 -----------------------------------------------------------------------------------------------------------------------------------------------
+	-Conversions2.php
+		font-size	
+			--> increased the font size from default to 20px;
+			--> changed on buttons
+				--> Calculate and Clear
+---------------------------------------------------------- 03/08/2019 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+	-BOMCalcRevised.php, Conversions2.php
+		Selected Options -- Disabled/Selected
+			--> Implemented a feature that would allow dropdown menu to stay selected once user had picked the choice;
+			--> Specifically in Conversions2.php
+				--> Based on user unit to convert from, the respective units to convert to would be non-disabled and disabled
+					--> I.E ---> if user needed to go from M ... LFT, LYDS, MSI, LBS would be allowed to selection while M and METERS are DISABLED
+			Resolved First WishList from (02/26/2019)
+				--> The selection buttons will stay selected after selects them. 
+	-BOMCalcRevised.php, Conversions2.php, RollLength.php, correlayouts.php
+		'Back to Main'
+			--> Added some arrows to indicate going back
+			--> &laquo;&laquo;'Back to Main'
+		'Back'
+			Same as 'Back to Main'
+			--> &laquo;&laquo; 'Back'
+		Headers
+			--> Added feature where the headers could be clicked to refresh the page
+---------------------------------------------------------- 03/15/2019 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	-BOMCalcRevised.php, Conversions2.php
+		No More Alert
+			--> Implemented a function that would negate the alert pop-up message stating what the error was
+			--> Now the page won't load unless the proper input is given. 
+			--> Conversions2.php
+				--> All fields must contain a value
+				--> If the value is zero, then the input will not be accept
+			--> BOMCalcRevised.php
+				--> Same thing
+		Tabular Design
+			--> BagsAndPouchesPage.php
+				--> combined the Wicket/Box/Zipper page into one called Bags and Pouches BOM
+			--> User can enter various combinations to get a result, yet certain ones won't produce a result
+				--> i.e if all are empty or zero, the page will not load the result
+				--> i.e if either repeat or strips is empty while the others are filled
+			--> In conversions2.php
+				--> units coverting with 5 inputs, changed to more of a list-like view rather than side by side. 
+				--> This was change due to the fact if the window was resized to be smaller, the display would wrap and thus cause confusion. 
+		AutoComplete='off'
+			--> There is no autocomplete on the inputs. This could was the autocomplete drop-down to overlap the other inputs. 
+			--> Initially, the reason for display the inputs and labels in one row was to negate the autocomplete overlap, but due to the design and the window sizing difference, 
+				--> the best idea was to just remove autocomplete as a whole
+	-BOMCalcRevised.php
+		--> LBSPage.php
+			--> extensive changes
+			--> Tabular layout
+				--> More like a list style for inputs and labels
+			--> 'Add Film'
+				--> button that will add yield or film when clicked
+			--> Film/Yield ++
+				--> Every time the user clicks the 'Add Film' another display of inputs will be accepted for the user to input
+			--> 'Remove Film'
+				--> button that removes the film that is respective to its yield
+				--> i.e --> if user removes film 4, yield/film 4 will be removed
+					--> and So on
+				--> MUST REMOVE the most recent added film first
+		
+--------------------------------------------------------------------------- 3/28/ 2019 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Version 4
+	-RevisedBomVersion4
+		--> Contains new Files
+			--> RollLengthCalculator.php
+			--> RolllengthComputations.php
+			--> RollLengthFootageFilled.php
+			--> RollLengthOutDiamFilled.php
+		--> The layout was mimicked from the HandyMath's website 
+			--> http://www.handymath.com/cgi-bin/rollenApp4.cgi 
+			--> The warehouse workers seemed to be using this more and I just wanted to make something that they were used to seeing and hopefully will be using
+	- RollLengthCalculator.php
+		--> More refined and cleaner layout than the original
+		--> Calculations are verified
+		--> User input is verified
+		--> Visually more appealing
+	- All Files
+		--> All files background has changed from #ffffff to #FFFAF0
+		--> Gives less of a pure white background
+			--> Can be less strain visually on the eye
+		--> More color to make more appealing. 
+		--> Changed the '<<<< Back to Main' link text color to #000; 
+			--> With a bold weight and a slight blue background to it
+	- RollLengthComputations.php
+		--> This is all the backend code. for all the computations
+		--> Will not have a radio button like the previous one did
+			--> can implement if needed, but Justin from the warehouse didn't like that layout
+			--> Too many clicks to get to where you wanted... navigation wasn't user-friendly
+		--> Perform calculations such as footage or/and estimated weight or outside diamter. 
+			--> cannot perform footage, estimated weight and outside diamter simultaneously, 
+				--> Only footage/estimated weight or outside diamter. 
+		--> input validation is performed to prevent buffer overflow, injection attacks
+			--> inputs will have a  max length  that can be allowed which is 15 characters
+			--> Inputs will only be Numbers, nothing alphabetical or alphanumeric. 
+		--> Will have the same checks and conditions like the previous rolllength
+		--> Much cleaner and organized source code ... using functions rather than ifs-elses thrown here and there
+			--> More of an OOD style like in Java
+	- RollLengthFootageFilled.php
+		--> Table-form of the answers the user had previously input
+		--> The table will change depending if the is looking for Estimated weight
+		--> This table is for results only
+		--> cannot make amends
+		--> Takes the PHP back end results and pushes it into the table for results. 
+		--. has a 'Go Back Button'
+	- RollLengthOutDiamFilled.php
+		--> Similar to the RollLengthFootageFilled.php
+		--> Only displays results
+		--> User cannot change the results unless he/she hit's the 'Go Back' button
+		--> User can also to the main menu if they wish from the results page. 
+
+	- Folders
+		--> Created to new Folders
+			--> ETCFiles
+			--> SOP
+			--> Styles
+		--> ETCFiles
+			--> any extra files such as such as extra codes, txt, pictures.. etc
+			--> not deleting, but may need in the future
+		--> SOP
+			--> All SOP files for each part of the Website will go here. 
+			--> Will eventually have to keep updating
+		--> Styles
+			--> any and all CSS styles that are used go into this file
+	Goals:
+		--> Create Cleaner code
+			--> CSS should be external and !inline
+			--> More organization
+		--> Verify any and all computations
+		--> Talk to Arron, Tina, Danielle, and anybody else needed to get more feedback
+--------------------------------------------------------04/02/2019--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	Styles
+		RollengthCalclatorStyle.css
+		IndexStyle.css
+		Conversion2Style.css
+		Conversion2PHPStyle.css
+		BoxLayoutStyle.css
+	Footer Links
+		I changed the footer Links to links rather than forms. 
+		This change was applied to any file that required a footer link. 
+			
+
+
+

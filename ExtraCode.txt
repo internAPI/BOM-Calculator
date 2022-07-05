@@ -1,0 +1,341 @@
+<table width="750"   border="0" cellspacing="0" cellpadding="0">
+		<tbody>
+			<tr>
+				<td>
+					<table width="100%" bgcolor="#ff7f00" border="0" cellspacing="0" cellpadding="0">
+						<tbody>
+							<tr>
+								<td height="5">
+								</td>
+							</tr>
+						</tbody>
+					</table>
+<!--					endae fourth table-->
+					
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+						<tbody>
+							<tr>
+								<td height="5"></td>
+							</tr>
+						</tbody>
+					</table>
+<!--					endae 5th table-->
+					
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+						<tbody>
+							<tr> 
+								<td align="center" valign="top" style="font-size: 20px; font-weight: bold;" colspan="2">Calculator for Rolled Length of Roll of Material</td>
+							</tr> 
+							<tr>
+								<td colspan="2">
+									
+									<table width="100%" border="0" cellspacing="0" cellpadding="0">
+										<tbody>
+											<tr>
+												<td height="2">
+										</td>
+											</tr>
+										</tbody>
+									</table>
+<!--									endae 1st child table of parent table 6-->
+									
+								</td>
+							</tr>
+							<tr>
+								<td valign="top">
+									<h2> Footage Calculator Calculator </h2>
+								</td>
+<!--
+								<td>
+									<img width="265" height="168" src="../webimages/roll2.gif" border="0">
+								</td>
+-->
+							</tr>
+						</tbody>
+					</table>
+<!--					endae 6th table-->
+					
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+						<tbody>
+							<tr>
+								<td height="4">
+								</td>
+							</tr>
+						</tbody>
+					</table>
+<!--					endae 7th table -->
+					
+					<table bgcolor="#ebb34e" border="2" cellspacing="0" cellpadding="3">
+						<form action="rollen.cgi" method="POST">
+						</form>
+						<tbody>
+							<tr bgcolor="#ffff33">
+								<th colspan="3">Values to be Entered</th>
+								<th colspan="1">Values to be Calculated</th>
+							</tr>
+							<tr bgcolor="#ffff33">
+								<th>Outside Diameter of Rolled Material</th>
+								<th>Thickness of Material</th>
+								<th>Diameter of Center Hole</th>
+								<th>Length of Material</th>
+							</tr>
+<!--
+							<tr bgcolor="#ffff33">
+								<td align="center">
+									<select name="convodia">
+										<option value="ft">ft
+										<option value="in" selected="">in
+										<option value="m">m
+										<option value="cm">cm
+										<option value="mm">mm
+										</option>
+									</select>
+								</td>
+								<td align="center">
+									<select name="convthic">
+										<option value="ft">ft
+										<option value="in">in
+										<option value="mil">mil
+										<option value="m">m
+										<option value="cm">cm
+										<option value="mm" selected="">mm
+										</option>
+									</select>
+								</td>
+								<td align="center">
+									<select name="convidia">
+										<option value="ft">ft
+										<option value="in" selected="">in
+										<option value="m">m
+										<option value="cm">cm
+										<option value="mm">mm
+										</option>
+									</select>
+								</td>
+								<td align="center">
+									<select name="convlen">
+										<option value="ft" selected="">ft
+										<option value="in">in
+										<option value="m">m
+										<option value="cm">cm
+										<option value="yd">yd
+										</option>
+									</select>
+								</td>
+							</tr>
+-->
+							<tr>
+								<td>
+									<input name="odia1" type="text" size="10" maxlength="20" value=""> inches
+								</td>
+								<td>
+									<input name="thic1" type="text" size="10" maxlength="20" value=""> gauge
+								</td>
+								<td>
+									<input name="idia1" type="text" size="10" maxlength="20" value=""> feet
+								</td>
+								<td>To Be Calculated</td>
+							</tr>
+							<tr bgcolor="#cc9933">
+								<th valign="top" colspan="4">
+									
+									<table align="left" border="0" cellspacing="3" cellpadding="0">
+										<tbody>
+											<tr>
+												<td align="center">
+													<input name="submit" type="submit" value="Calculate"> 
+												</td>
+												<td align="center">
+													<input name="submit" type="submit" value="Reset">
+													<input name="numnum" type="hidden" value="1"> 
+												</td>
+<!--
+												<td width="330" align="center" valign="middle" bgcolor="#996600">
+													<input name="submit" type="submit" value="Add Rows">
+													<input name="submit" type="submit" value="Remove Rows">
+													<input name="moreless" type="text" size="2" maxlength="2" value="1">
+												</td>
+-->
+											</tr>
+<!--											endae 1st child table row of parent 8-->
+										</tbody>
+<!--										endae 1st child table body of parent 8-->
+									</table>
+<!--									endae 1st child of parent 8-->
+									
+								</th>
+							</tr>
+						</tbody>
+					</table>
+<!--					endae 8th table-->
+				</td>
+<!--				endae main table cell-->
+			</tr>
+<!--			endae main table row-->
+		</tbody>
+<!--		endae main table body-->
+	</table>
+<!--endae main table-->
+
+
+
+<!--
+		Copy and Paste code references
+						<p style ='color:#F00;'>
+							<b> *CANNOT BE ZERO!* </b>
+						</p>
+			
+						<b style ='color:#F00;'>*</b>
+
+-->
+
+
+
+////			function bomMainDisplay($title) {
+//				echo "
+//				<form method = 'POST' action ='BOMCalcRevised.php'>
+//					<h1 style = 'padding: auto;' >MTR from $title</h1>
+//					
+//					<p>
+//						<b style='color: #F00;'> Under Construction </b>
+//					</p>
+//					
+//					<script>
+//						function setDecimal(val) {
+//							val.value = parseFloat(val.value).toFixed(4);
+//						}
+//					</script>
+//					
+//					<input name='BOM' style='display:none' value='BOM'/>
+//					<br>
+//					<div> 
+//						<label for = 'submit'>
+//							<input type ='submit' name ='submit'value='Calculate' />
+//							<input type ='reset' name ='reset' value ='Clear' />
+//						</label>
+//					</div
+//				</form>
+//					";
+////		}
+
+
+
+
+//			function wicketMainDisplay($title) {
+//				echo "
+//					<form method = 'POST' action ='BOMCalcRevised.php'>
+//						<h1 style = 'padding: auto;'>$title BOM</h1>
+//						<p style ='color:#F00;'>
+//							<b> *CANNOT BE ZERO!* <b>
+//						</p>
+//						<p>
+//							<label for = 'bagppack' ><b style ='color:#F00;'>*</b>Enter # of bags per pack:</label> 
+//							<input type= 'number' name = 'bagppack' placeholder = 'Enter' value =''  maxlength = '14' onChange='setDecimal(this)'step = '.0001' autofocus/>
+//						</p>
+//
+//						<script>
+//							function setDecimal(val) {
+//								val.value = parseFloat(val.value).toFixed(4);
+//							}
+//						</script>
+//
+//						<input name='WICKET' style='display:none' value='WICKET'/>
+//
+//
+//						<br>
+//						<div> 
+//							<label for = 'submit'>
+//								<input type ='submit' name ='submit'value='Calculate' />
+//								<input type ='reset' name ='reset' value ='Clear' />
+//							</label>
+//						</div
+//
+//
+//						</form>
+//					";
+//				// header called Wickets BOM
+//				// paragraph containing labels and an input box	
+//			}
+	
+//			function boxMainDisplay($title) {
+//				echo "
+//					<form method = 'POST' action ='BOMCalcRevised.php'>
+//						<h1 style = 'padding: auto;'>$title BOM</h1>
+//						<p style ='color:#F00;'>
+//							<b> *CANNOT BE ZERO!* <b>
+//						</p>
+//						<p>	
+//							<label for = 'bagpbox'><b style ='color:#F00;'>*</b>Enter # of bags per box:</label>
+//							<input type= 'text' name = 'bagpbox' placeholder = Enter value = '' maxlength = '14' onChange='setDecimal(this)'step = '.0001' autofocus/>
+//						</p>
+//
+//						<script>
+//							function setDecimal(val) {
+//								val.value = parseFloat(val.value).toFixed(4);
+//							}
+//						</script>
+//
+//						<input name='BOX' style='display:none' value='BOX'/>
+//						<br>
+//						<div> 
+//							<label for = 'submit'>
+//								<input type ='submit' name ='submit'value='Calculate' />
+//								<input type ='reset' name ='reset' value ='Clear' />
+//							</label>
+//						</div
+//					</form>
+//					";
+//			}
+			
+//			function zipperMainDisplay($title) {
+//				echo"<br>
+//				
+//					<h2 style = 'padding: auto;' >For $title Entries</h2>
+//					
+//					<p>
+//						<label for = 'bagrepeat'>Enter Repeat (inches):</label>
+//						<input type= 'number' name = 'bagrepeat' placeholder = Enter value = '' maxlength = '14' autofocus onChange='setDecimal(this)'step = '.0001' autocomplete='off' />
+//						
+//					</p>
+//					<P>
+//						<label for = 'strips'>Number of strips per bag:</label>
+//						<input type= 'number' name = 'strips' placeholder = Enter value = '' maxlength = '14' onChange='setDecimal(this)'step = '.0001' autocomplete='off' />
+//					</p>
+//
+//					<script>
+//						function setDecimal(val) {
+//							val.value = parseFloat(val.value).toFixed(4);
+//						}
+//					</script>
+//					<br>
+//					<div> 
+//						<label for = 'submit'>
+//							<input type ='submit' name ='submit'value='Calculate' />
+//							<input type ='reset' name ='reset' value ='Clear' />
+//						</label>
+//					</div
+//				
+//				";
+//			} // endae zipperMainDisplay function
+
+
+
+
+<!--<?php if (($_POST['submit']) && $_POST['submit'] == 'Calculate') echo 'selected' ?> -->
+
+
+
+
+<p>
+									<label for = 'footage' > Footage (LFT):  </label>
+									<input type= 'number' name = 'footage' placeholder = 'FOOTAGE' value =''  maxlength = '10' onChange='setDecimal(this)'step = '.0001' autocomplete='off'/>
+								</p>
+
+
+
+
+
+
+
+
+

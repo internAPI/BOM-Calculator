@@ -1,0 +1,588 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	
+	
+	
+	<title>Roll Length Calculator</title>
+<link href="./Styles/RollLengthStyle.css" rel="stylesheet" type="text/css">
+</head>
+	
+	
+	<?php
+		
+		function displayFootageCalculator($flag) {
+			echo
+				"<h1>Footage Calculator</h1><br>
+				<IMG SRC='http://www.handymath.com/webimages/roll2.gif' width='265' height='168' BORDER='0'>
+					<br><br>
+				<table border='4' CELLPADDING='3' CELLSPACING='0' BGCOLOR='#080DF8' style='color: #FFF;'>
+					<form method=POST action='rollLength.php'>
+						<input name='$flag' value = '$flag' style='display:none'/>
+						<tr BGCOLOR='#080DF8' >
+							<th colspan='3'>Values to be Entered</th>
+							<th colspan='1'>Values to be Calculated</th>
+						</tr>
+
+						<tr BGCOLOR='#ABABAB'>
+							<th>Outside Diameter of Roll</th>
+							<th>Thickness of Material</th>
+							<th>Core</th>
+							<th>Length of Material</th>
+						</tr>
+
+						<tr>
+							<td>
+								<input type=text name=odia placeholder = Enter value = '' maxlength = '14' autofocus onChange='setDecimal(this)'step = '.0001' autocomplete='off' /> inches</td>
+
+								<td>
+									<input type=text name=thick list='thick' maxlength = '14' onChange='setDecimal(this)'step = '.0001' autocomplete='off' />
+										<datalist id = 'thick'>
+											<option value = 48>48</option>
+											<option value = 60>60</option>
+											<option value = 70>70</option>
+											<option value = 80>80</option>
+											<option value = 90>90</option>
+											<option value = 200>200</option>
+											<option value = 300>300</option>
+											<option value = 400>400</option>
+										</datalist> gauge
+								</td>
+							</td>
+							<td>
+								<select name=idia>
+									<option value = 7>6' Thin</option>
+									<option value = 7.22> 6' Thick</option>
+									<option value = 4>3' </option>
+							</td>
+
+								<td>To Be Calculated (ft)</td>
+						</tr>
+
+						<tr BGCOLOR='#ABABAB'>
+							<th colspan='2'>Roll Width</th>
+							<th colspan='2'>Material</th>
+						</tr>
+
+						<tr>
+							<td colspan ='2'>
+								<input type = text name = 'facew' placeholder = Enter value='' maxlength='14' onChange='setDecimal(this)' step = '.0001' autocomplete='off' /> inches
+							</td>
+
+							<td colspan ='2'>
+								<select name =material>
+									<option value = 0 selected> SELECT MATERIAL </option>
+									<option value = 0.050>Polyester</option>
+									<option value = 0.038>Nylon</option>
+									<option value = 0.033>Polypropylene/Poly</option>
+									<option value = 0.034>HDPE</option>
+									<option value = 0.038>Laminations</option>
+									<option value= 0.097> Aluminum</option>
+								</select> 
+							</td>
+						</tr>
+						<tr BGCOLOR='#ABABAB'>
+							<th colspan='4' valign=top>
+								<table BORDER='0' CELLPADDING='0' CELLSPACING='3' ALIGN=left>
+									<tr>
+										<td align=center>
+											<input type=submit name=submit value='Calculate'> 
+										</td>
+
+										<td align=center>
+											<input type=reset name=reset value='Reset'>
+										</td>
+									</tr>
+								</table>
+							</th>
+						</tr>
+					</form>
+				</table>
+				
+				<script>
+					function setDecimal(val) {
+						val.value = parseFloat(val.value).toFixed(4);
+					}
+				</script>	
+			"
+			; // endae the ECHO statement
+			
+			
+			
+		}
+	
+		function displayODCalculator($flag) {
+			echo
+				"<h1>O.D. Calculator</h1>
+				<br>
+				<IMG SRC='http://www.handymath.com/webimages/roll2.gif' width='265' height='168' BORDER='0'>
+				<br><br>
+				<table BORDER='0' CELLPADDING='0' CELLSPACING='0' width='100%'>
+					<tr>
+						<td height='4'>
+						</td>
+					</tr>
+				</table>
+				<table border='4' CELLPADDING='3' CELLSPACING='0' BGCOLOR='#080DF8'>
+					<form method=POST action='rollLength.php'>
+						<input name='$flag' value = '$flag' style='display:none'/>
+						
+						<tr BGCOLOR='#080DF8' >
+							<th colspan='3'style = 'font-weight:bold; color: #FFF;'>Values to be Entered</th>
+							<th colspan='1'style = 'font-weight:bold; color: #FFF;' >Values to be Calculated</th>
+						</tr>
+
+						<tr BGCOLOR='#ABABAB'>
+							<th>Length of Material</th>
+							<th>Thickness of Material</th>
+							<th>Core</th>
+							<th>Outside Diameter of Roll</th>
+						</tr>
+
+						<tr>
+							<td style= 'color: #FFF;'>
+								<input style = 'font-weight:bold;' type=text name=lm placeholder = Enter value = '' maxlength = '14' onChange='setDecimal(this)'step = '.0001'  autocomplete='off' /> ft
+							</td>
+							
+							<td style= 'color: #FFF;'>
+								<input style= 'color: #000; font-weight:bold;'type=text name=thick list='thick' maxlength = '14' onChange='setDecimal(this)'step = '.0001'  autocomplete='off' />
+								<datalist id = 'thick'>
+									<option value = 48>48</option>
+									<option value = 60>60</option>
+									<option value = 70>70</option>
+									<option value = 80>80</option>
+									<option value = 90>90</option>
+									<option value = 200>200</option>
+									<option value = 300>300</option>
+									<option value = 400>400</option>
+								</datalist> gauge
+							</td>
+
+							<td style= 'color: #FFF;'>
+								<select name=idia style = 'color: #000; font-weight:bold;'>
+									<option value = 7>6' Thin</option>
+									<option value = 7.22> 6' Thick</option>
+									<option value = 4>3' </option>
+							</td>
+							<td style= 'color: #FFF;'>To Be Calculated (inches)</td>
+						</tr>
+
+						<tr BGCOLOR='#ABABAB'>
+							<th colspan='4' valign=top>
+								<table BORDER='0' CELLPADDING='0' CELLSPACING='3' ALIGN=left>
+									<tr>
+										<td align=center>
+											<input type=submit name=submit value='Calculate'> 
+										</td>
+										<td align=center>
+											<input type=reset name=reset value='Reset'>
+										</td>
+									</tr>
+								</table>
+							</th>
+						</tr>
+					</form>
+				</table>
+				
+				<script>
+					function setDecimal(val) {
+						val.value = parseFloat(val.value).toFixed(4);
+					}
+				</script>
+				"
+			; // enae ECHO statement
+		}
+	
+	
+	?>
+	
+	
+<body>
+	<h1 style = 'font-size: 50px;border-bottom: double #55F; width: 50%;'>
+		<a href = '?' style = 'text-decoration: none; color: #000;'> 
+		<img id = 'logo'src = 'http://admiralpkg.com/wp-content/uploads/2017/05/admirallogo_header-01-300x138.png'/> <br>	
+		Roll Length Calculator 
+		</a>
+
+	</h1>
+	<br>
+	<!--	created link to revert back to API-->
+	<a id = 'back' href = "index.php"  style = 'margin-bottom: 50px; text-decoration: none; color: #000;'>&laquo;&laquo; Back To Main</a>	<br>
+	<form method = POST action="rollLength.php" style = 'padding-top: 50px'>
+		<input name=radio type="radio" onchange="this.form.submit();" <?php if(isset($_POST['radio']) && $_POST['radio'] == 'rl') echo "checked";?> value="rl">
+<!--		check so that if the radio has been clicked it will darken and fill -->
+			<font color="black">For Finding the Footage Calculator </font>
+		</input>
+		<br>
+		<br>
+		<input name='radio' type="radio" onchange="this.form.submit();" <?php if(isset($_POST['radio']) && $_POST['radio'] == 'od') echo "checked";?> value="od"/>
+<!--		check so that if the radio has been clicked it will darken and fill -->
+			<font color="black">For Finding the O.D. Calculator </font>
+		</input>
+	</form>
+	<?php
+		if(isset($_POST['radio'])){
+
+			if($_POST['radio'] == "rl"){
+				displayFootageCalculator("fromRL");
+			} // endae FIRST nested IF
+
+			if($_POST['radio'] == "od"){
+				displayODCalculator("fromOD");
+			} // endae 2nd nested IF
+		} // endae OUTER IF
+	?>
+
+
+
+	<?php	
+
+		if(!empty($_POST['fromRL'])) {
+			echo "<h1 style='margin-left: 5%;'>Footage Length Calculated Values</h1>";
+			$odia = $_POST['odia'];
+			$thick = $_POST['thick'];
+			$idia = $_POST['idia'];
+			$facew = $_POST['facew'];
+			$material = $_POST['material'];
+
+			if ($odia == 0 || $thick == 0){
+				echo "<h2 style='color: #F00;'>ERROR - Outside Diameter and Thickness must be a numeric value greater than 0</h2>
+				<input type='button' onclick='GoBack()' name=submit value='Back to Calculator'><br>
+				<script> function GoBack() {
+					javascript:history.go(-1);
+				}
+				</script>";
+			}
+
+			else if($odia <= $idia){
+				echo "<h2 style='color: #F00;' >ERROR - Outside Diameter must be greater than Core<h2>
+					<input type='button' onclick='GoBack()' name=submit value='Back to Calculator'><br>
+					<script> function GoBack() {
+					javascript:history.go(-1);
+					}
+					</script>";
+			}
+
+			else{
+				if($thick == 48 || $thick == 60 || $thick == 70 || $thick == 80 || $thick == 90 || $thick == 200 || $thick == 300 || $thick == 400){
+					$thick = $thick*.97*.00001;
+				}
+				else{
+					$thick = $thick *.00001;
+				}
+				$lom = M_PI / (48*$thick)*(($odia*$odia)-($idia*$idia));
+//				$lom = M_PI / (48*$thick)*(($odia*$odia)-($facew*$facew));
+				$mft = $lom *1000;
+				$lom = number_format($lom,0);
+				$mft = number_format($mft,4, ".", ",");
+				$in =' in ';
+				$ft = " ft ";
+
+				if($idia == 7){
+					$midia = '6" Thin';
+				}
+
+				else if($idia == 7.22){
+					$midia = '6" Thick';
+				}
+
+				else if($idia == 4){
+					$midia = '3"';
+				}
+			
+
+
+				echo
+					"<br><br><br>
+					<table BORDER='0' CELLPADDING='0' CELLSPACING='0' width=100%>
+						<tr>
+							<td height=5></td>
+						</tr>
+					</table>
+
+					<table border='4' bordercolor='#4d99e5'>
+
+						<tr bgcolor='#ffffff' align= left>
+							<td STYLE='font-size: 20pt; font-weight: bold; border: groove #4d99e5; padding-right: 15px;'>Outside Diameter of Rolled Material</td>
+							<td STYLE='font-size: 20pt; font-weight: bold; border: groove #4d99e5;'>$odia$in</td>
+						</tr>
+						<tr>
+							<td STYLE='font-size: 20pt; font-weight: bold; border: groove #4d99e5;'>Thickness of Material</td>
+							<td STYLE='font-size: 20pt; font-weight: bold; border: groove #4d99e5;'>$thick$in</td>
+						</tr>
+						<tr>
+							<td STYLE='font-size: 20pt; font-weight: bold; border: groove #4d99e5;'>Diameter of Center Hole</td>
+							<td STYLE='font-size: 20pt; font-weight: bold; border: groove #4d99e5;'>$facew</td>
+						</tr>
+						<tr>
+							<td STYLE='font-size: 20pt; font-weight: bold; border: groove #4d99e5;'> Length of Material </td>
+							<td STYLE='font-size: 20pt; font-weight: bold; border: groove #4d99e5;'>$mft mft</td>
+						</tr>
+						";
+
+							if(!empty($material)&&!empty($facew)){
+								$ew = (($odia*$odia)-($idia*$idia))*$facew*$material;
+								echo
+									"
+									<tr>
+										<td STYLE='font-size: 20pt; font-weight: bold;'>Estimated Weight</td>";
+							} // endae IF
+
+							
+							if(!empty($material)&&!empty($facew)){
+								$ew = (($odia*$odia)-($idia*$idia))*$facew*$material;
+								$ew = number_format($ew,0);
+								echo
+									"<td STYLE='font-size: 20pt; font-weight: bold;'>$ew lbs</td>
+								</tr>";
+							} // endae IF
+
+					echo
+						"</tr>
+					</table>
+					<br>
+					<input type = 'button' name='submt' onclick='GoBack()' value='Back to Calculator'>
+					<input type=hidden name=numnum value='1'>
+					<table BORDER='0' CELLPADDING='0' CELLSPACING='0' width='100%''>
+						<tr>
+							<td height='5'></td>
+						</tr>
+					</table>
+				</table>
+
+				<script> function GoBack() {
+					javascript:history.go(-1);
+				}
+				</script>
+
+				";
+			} // endae ELSE
+		} // endae IF
+
+
+
+
+//					<table border='1' bgcolor='#4d99e5' bordercolor='#4d99e5'>
+//						<tr align=center bgcolor='#ffffff'>
+//							<td colspan=3 STYLE='font-size: 30pt; font-weight: bold;'>Entered Values</td>
+//							<td colspan=3 STYLE='font-size: 30pt; font-weight: bold;'>Calculated Values</td>
+//						</tr>
+//
+//						<tr bgcolor='#ffffff' align= center>
+//							<td STYLE='font-size: 20pt; font-weight: bold;'>Outside Diameter of Rolled Material</td>
+//							<td STYLE='font-size: 20pt; font-weight: bold;'>Thickness of Material</td>
+//							<td STYLE='font-size: 20pt; font-weight: bold;'>Diameter of Center Hole</td>
+//							<td colspan =2 STYLE='font-size: 20pt; font-weight: bold;'> Length of Material </td>";
+//
+//							if(!empty($material)&&!empty($facew)){
+//								$ew = (($odia*$odia)-($idia*$idia))*$facew*$material;
+//								echo
+//									"<td STYLE='font-size: 20pt; font-weight: bold;'>Estimated Weight</td>";
+//							} // endae IF
+//
+//					echo
+//						"</tr>
+//
+//						<tr bgcolor='#ffffff'>
+//							<td STYLE='font-size: 20pt; font-weight: bold;'>$odia$in</td>
+//							<td STYLE='font-size: 20pt; font-weight: bold;'>$thick$in</td>
+//							<td STYLE='font-size: 20pt; font-weight: bold;'>$midia</td>
+//							<td STYLE='font-size: 20pt; font-weight: bold;'>$lom$ft</td>
+//							<td STYLE='font-size: 20pt; font-weight: bold;'>$mft MFT</td>";
+//
+//							if(!empty($material)&&!empty($facew)){
+//								$ew = (($odia*$odia)-($idia*$idia))*$facew*$material;
+//								$ew = number_format($ew,0);
+//								echo
+//									"<td STYLE='font-size: 20pt; font-weight: bold;'>$ew lbs</td>";
+//							} // endae IF
+//
+//					echo
+//						"</tr>
+//					</table>
+
+
+
+
+		if(!empty($_POST['fromOD'])) {
+				echo "<h1 style='margin-left: 5%;'>O.D Calculated Values</h1>";
+				$lom = $_POST['lm'];
+				$thick = $_POST['thick'];
+				$idia = $_POST['idia'];
+
+				if($thick <= 0){
+					echo "<h2 style='color: #F00;'>ERROR - Thickness must be greater than 0<h2>
+						<input type='button' onclick='GoBack()' name=submit value='Back to Calculator'><br>
+						<script> function GoBack() {
+						javascript:history.go(-1);
+						}
+						</script>";
+				}
+
+				else{
+					if($thick == 48 || $thick == 60 || $thick == 70 || $thick == 80 || $thick == 90 || $thick == 200 || $thick == 300 || $thick == 400){
+						$thick = $thick*.97*.00001;
+					} // endae IF
+					else{
+						$thick = $thick *.00001;
+					} // endae ELSE
+					$odia = sqrt($idia*$idia+((48*$thick*$lom)/M_PI));
+
+
+					$odia = number_format($odia,4);
+					$in =' in ';
+					$ft = " ft ";
+
+					if($idia == 7){
+						$midia = '6" Thin';
+					}
+					else if($idia == 7.22){
+						$midia = '6" Thick';
+					}
+					else if($idia == 4){
+						$midia = '3"';
+					}
+					echo
+						"<br><br><br>
+						<table BORDER='0' CELLPADDING='0' CELLSPACING='0' width=100%>
+							<tr>
+								<td height=5></td>
+							</tr>
+						</table>
+
+						<table border='4' bordercolor='#4d99e5'>
+							<tr bgcolor='#ffffff' border='4' align= left>
+								<td STYLE='font-size: 20pt; font-weight: bold; border: groove #4d99e5;'>Length of Material</td>
+								<td STYLE='font-size: 20pt; font-weight: bold; border: groove #4d99e5;'>$lom$ft</td>
+							</tr>
+							<tr>
+								<td STYLE='font-size: 20pt; font-weight: bold; border: groove #4d99e5;'>Thickness of Material</td>
+								<td STYLE='font-size: 20pt; font-weight: bold; border: groove #4d99e5;'>$thick$in</td>
+							</tr>
+							<tr>
+								<td STYLE='font-size: 20pt; font-weight: bold; border: groove #4d99e5;'>Diameter of Center Hole</td>
+								<td STYLE='font-size: 20pt; font-weight: bold; border: groove #4d99e5;'>$midia</td>
+							</tr>
+							<tr>
+								<td STYLE='font-size: 20pt; font-weight: bold; border: groove #4d99e5;padding-right: 15px;'>Outside Diameter of Rolled Material </td>
+								<td STYLE='font-size: 20pt; font-weight: bold; border: groove #4d99e5;'>$odia$in</td>
+							</tr>
+							
+						</table>
+						<br>
+						<input type='button' name=submit onclick= 'GoBack()' value='Back to Calculator'>
+						<input type=hidden name=numnum value='1'>
+						<table BORDER='0' CELLPADDING='0' CELLSPACING='0' width='100%''>
+							<tr>
+								<td height='5'></td>
+							</tr>
+						</table>
+					</table>
+					
+					<script> function GoBack() {
+						javascript:history.go(-1);
+					}
+					</script>
+					
+					
+					
+					
+						</table>
+					
+					";
+				} // endae ELSE
+			} // endae IF
+
+
+
+
+
+//						<table border='1' bgcolor='#4d99e5' bordercolor='#4d99e5'>
+//							<tr bgcolor='#ffffff' align= center>
+//								<td STYLE='font-size: 20pt; font-weight: bold;'>Length of Material</td>
+//								<td STYLE='font-size: 20pt; font-weight: bold;'>$lom$ft</td>
+//							</tr>
+//							<tr>
+//								<td STYLE='font-size: 20pt; font-weight: bold;'>Thickness of Material</td>
+//								<td STYLE='font-size: 20pt; font-weight: bold;'>$thick$in</td>
+//							</tr>
+//							<tr>
+//								<td STYLE='font-size: 20pt; font-weight: bold;'>Diameter of Center Hole</td>
+//								<td STYLE='font-size: 20pt; font-weight: bold;'>$midia</td>
+//							</tr>
+//							<tr>
+//								<td colspan =2 STYLE='font-size: 20pt; font-weight: bold;'>Outside Diameter of Rolled Material </td>
+//								<td STYLE='font-size: 20pt; font-weight: bold;'>$odia$in</td>
+//							</tr>
+//							
+//						</table>
+//
+//
+//
+//						<table border='1' bgcolor='#4d99e5' bordercolor='#4d99e5'>
+//							<tr align=center bgcolor='#ffffff'>
+//								<td colspan=3 STYLE='font-size: 30pt; font-weight: bold;'>Entered Values</td>
+//								<td colspan=3 STYLE='font-size: 30pt; font-weight: bold;'>Calculated Values</td>
+//							</tr>
+//							<tr bgcolor='#ffffff' align= center>
+//								<td STYLE='font-size: 20pt; font-weight: bold;'>Length of Material</td>
+//								<td STYLE='font-size: 20pt; font-weight: bold;'>Thickness of Material</td>
+//								<td STYLE='font-size: 20pt; font-weight: bold;'>Diameter of Center Hole</td>
+//								<td colspan =2 STYLE='font-size: 20pt; font-weight: bold;'>Outside Diameter of Rolled Material </td>
+//							</tr>
+//							<tr bgcolor='#ffffff'>
+//								<td STYLE='font-size: 20pt; font-weight: bold;'>$lom$ft</td>
+//								<td STYLE='font-size: 20pt; font-weight: bold;'>$thick$in</td>
+//								<td STYLE='font-size: 20pt; font-weight: bold;'>$midia</td>
+//								<td STYLE='font-size: 20pt; font-weight: bold;'>$odia$in</td>
+//							</tr>
+//						</table>
+
+
+
+
+
+
+
+	?>
+
+
+<!--
+						
+
+
+
+
+
+
+
+
+
+
+
+-->
+
+
+
+	<br>
+	<b>
+		<p>Other Resources</p>
+	</b>
+
+	<form method= 'POST' action ="BOMCalcRevised.php">
+		<input class ="button" type=submit name=bomcalc value="BOM Calculator" STYLE="background-color: #080DF8; border: none; display: inline-block; color: white; padding: 15px 32px; font-weight: bold; float: left;">
+	</form>
+
+	<form method=POST action ="conversions2.php">
+	<!--		creating form tag that redirects page to conversions.php -->
+		<input class = "button" type=submit name=cc value="Conversion Calculator" STYLE="background-color: #080DF8; border: none; display: inline-block; color: white; padding: 15px 32px; font-weight: bold; float: left">
+<!--		creates input button for redirecting to conversions.php-->
+	</form>
+
+	<form method='POST' action ="corrlayouts.php">
+		<input class = "button" type=submit name=rl value="Box Layouts" STYLE="background-color: #080DF8; border: none; display: inline-block; color: white; padding: 15px 32px; font-weight: bold; float: left;">
+	</form>
+</body>
+	
+</html>

@@ -1,0 +1,228 @@
+<?php
+
+
+	if (isset($_POST['submit'])) {
+	// IF statement for footage calculation
+		if ($_POST['submit'] == 'CalcFOOT') {
+			$outDiam = inputValidation($_POST['outDiam']);
+			$innerDiamSel = inputValidation($_POST['innerDiamSel']);
+			$thickness = inputValidation($_POST['thickness']);
+			$material = EstWeightValidation($_POST['material']);
+			$rollWidth = EstWeightValidation($_POST['rollWidth']);
+
+			if (!empty($outDiam) && !empty($innerDiamSel) && !empty($thickness) && empty($material) && empty($rollWidth)) {
+				if (ODetThickErr($outDiam, $thickness) == true) {
+					echo "<h2 style='color: #F00;'>****ERROR - Outside Diameter and Thickness must be a numeric value greater than 0</h2>";
+				}
+				if (ODetIDErr($outDiam, $innerDiamSel) == true) {
+					echo "<h2 style='color: #F00;' >****ERROR - Outside Diameter must be greater than Core<h2>";	
+				}
+				else {
+					$innerDesc;
+					if ($innerDiamSel == 7) {
+						$innerDesc = '6" Thin';
+					}
+					else if ($innerDiamSel == 7.22) {
+						$innerDesc = '6" Thick';
+					}
+					else if ($innerDiamSel == 3){
+						$innerDesc = '3"';
+					}
+					else {
+						$innerDesc = $innerDiamSel;
+					}
+					$thicknessPost = thickCheck($thickness);
+					$length = calcLength($outDiam, $innerDiamSel, $thicknessPost);
+					$mft = $length/1000;
+				} // endae ELSE 
+			}
+			else if (!empty($outDiam) && !empty($innerDiamSel) && !empty($thickness) && !empty($material) && !empty($rollWidth)) {
+				if (ODetThickErr($outDiam, $thickness) == true) {
+					echo "<h2 style='color: #F00;'>ERROR - Outside Diameter and Thickness must be a numeric value greater than 0</h2>
+					<input type='button' onclick='GoBack()' name=submit value='Back to Calculator'><br>
+					<script>
+						function GoBack() {
+							javascript:history.go(-1);
+						}
+					</script>";
+				}
+				if (ODetIDErr($outDiam, $innerDiamSel) == true) {
+					echo "<h2 style='color: #F00;' >ERROR - Outside Diameter must be greater than Core<h2>
+						<input type='button' onclick='GoBack()' name=submit value='Back'><br>
+						<script> 
+							function GoBack() {
+								javascript:history.go(-1);
+							}
+						</script>";	
+				}
+				else {
+					$innerDesc;
+					if ($innerDiamSel == 7) {
+						$innerDesc = '6" Thin';
+					}
+					else if ($innerDiamSel == 7.22) {
+						$innerDesc = '6" Thick';
+					}
+					else if ($innerDiamSel == 3){
+						$innerDesc = '3"';
+					}
+					else {
+						$innerDesc = $innerDiamSel;
+					}
+						$thicknessPost = thickCheck($thickness);
+					$length = calcLength($outDiam, $innerDiamSel, $thicknessPost);
+					
+					$estimated = calcEstimatedWeight($outDiam, $innerDiamSel, $rollWidth, $material);
+					$mft = $length/1000;
+//						printEstimated(ceil($estimated));
+				} // endae ELSE 
+			} // endae ELSE IF	
+			else {
+					echo "<script> javascript:history.go(-1); </script>";	
+				}
+		} // endae NESTED IF
+	// ESLE IF statement for OD calculation	
+		else if ($_POST['submit'] == 'CalcOD'){
+			// initializing variables
+			$length = inputValidation($_POST['length']);
+			$innerDiamSel = inputValidation($_POST['innerDiamSel']);
+			$thickness = inputValidation($_POST['thickness']);
+			// checking for error 
+			if (!empty($length) && !empty($innerDiamSel) && !empty($thickness)) {
+				if (ODetThickErr(0,$thickness) == true) {
+					// using the ODetThickErr check function
+					echo "<h2 style='color: #F00;'>****ERROR - Thickness must be a numeric value greater than 0</h2>";
+				} // endae IF
+				else {
+					// ELSE when no error has occured
+					$innerDesc;
+					if ($innerDiamSel == 7) {
+						$innerDesc = '6" Thin';
+					}
+					else if ($innerDiamSel == 7.22) {
+						$innerDesc = '6" Thick';
+					}
+					else if ($innerDiamSel == 3){
+						$innerDesc = '3"';
+					}
+					else {
+						$innerDesc = $innerDiamSel;
+					}
+					$thicknessPost = thickCheck($thickness); // thickness will be checked
+					$outDiam = calcOD($thicknessPost, $innerDiamSel, $length); // computation will occur to find outDiam
+				} // endae NESTED ELSE
+			} // endae IF
+			else {
+				echo "<script> javascript:history.go(-1); </script>";	
+			} // endae ELSE
+		} // endae ELSE
+	}
+	
+
+// FUNCTIONS FOR FINDING FOOTAGE!!!
+	function calcLength($outDiam, $innerDiam, $thicknessPost) {
+		// checks if thickness if zero 
+		if ($thicknessPost == 0) {
+			return $thicknessPost; // returns thicness if true
+		} // endae IF
+		else {
+			// ESLE when thickness is !true
+			$ft = M_PI / (48*$thicknessPost)*(power($outDiam) - power($innerDiam)); // computes MFT
+			
+			return $ft; // returns the value of mft with specific formatting
+		} // endae ELSE
+	} // endae calcLength function
+
+// FUNCTION TO CALCULATE ESTIMATED WEIGHT
+	function calcEstimatedWeight($outDiam, $innerDiam, $rollWidth, $material) {
+		$estimated = ((float)power($outDiam) - power($innerDiam)) * $rollWidth * $material; // computes the estimated weight
+		return $estimated = round($estimated, 4); // returns the estimated weight in special format
+	} // endae calcEstimatedWeight function
+	
+	function printEstimated($estimated) {
+		// prints out the part of the table that would include the Roll Width and Material
+		echo
+			"
+			<tr id = 'estRow'> 	
+				<th  id = 'estHeader'>Roll Width && Material
+				</th>
+				<td>
+					$estimated 
+				</td>
+				<td  >
+					lbs
+				</td>
+			</tr>
+			";
+	} // endae printedEstimated function
+
+// FUNCTIONS FOR FINDING OD
+	function calcOD($thickness, $innerDiam, $length) {
+		$outDiam = sqrt(power($innerDiam) + ((48*$thickness * $length) /M_PI)); // computes outDiam
+//		$outDiam = sqrt((M_PI + power($innerDiam))/(48*$thickness * $length)); // computes outDiam
+		return $outDiam = number_format($outDiam, 4, ".", ","); // returns outDiam in a special format
+	}
+	
+// OTHER FUNCTIONS NEEDED
+	function power($num) {
+		return $num*$num; // powers the incoming parameter and returns it
+	} // endae power function
+
+// INPUT VALIDATION FUNCTIONS	
+	function inputValidation($data) {
+		// validating the input to prevent over loading of input
+		$data = trim($data);
+  		$data = stripslashes($data);
+		$data = htmlspecialchars($data);
+		
+		if (empty($data)) {
+			echo "echo <script> javascript:history.go(-1) </script>";
+		}
+		else {
+			return $data;
+		}
+	} // endae input Validation
+
+ 	function EstWeightValidation($data) {
+		$data = trim($data);
+  		$data = stripslashes($data);
+		$data = htmlspecialchars($data);
+		return $data;
+	}
+
+// FUNCTIONS TO CHECK ERRORS or RESTRICTIONS
+	function ODetThickErr($outDiam, $thickness) {
+		$flag = false;
+		if ($thickness == 0) {
+			$flag = 'true';
+		} // endae IF
+		return $flag;
+	} // endae ODetThickErr function
+	
+	function ODetIDErr($outDiam, $innerDiam) {
+		$flag = false;
+		if ($outDiam <= $innerDiam) {
+			$flag = 'true';
+		} // endae IF
+		return $flag;
+	} // endae ODetIDErr function
+
+	function thickCheck($thick) {
+		if($thick == 48 || $thick == 60 || $thick == 70 || $thick == 80 || $thick == 90 || $thick == 200 || $thick == 300 || $thick == 400){
+			$thick = $thick*.97*.00001;
+		}
+		else{
+			$thick = $thick *.00001;
+//			echo $thick;
+		}
+		return $thick;
+	} // endae thickCheck
+
+
+
+
+
+
+
+
+	?>
