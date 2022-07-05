@@ -1,0 +1,74 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	margin-left: 50px;
+	font-family: "Verdana";
+	white-space: nowrap;
+	background-color: #FFFAF0;
+}
+#back {
+	margin-bottom: 50px; 
+	text-decoration: none;
+	color: #000;
+	background-color: #EEF;
+}
+#back:hover {
+	border-bottom: double #999;
+}
+#header {
+	font-size: 50px;
+	border-bottom: double #55F; 
+	width: 375px;
+}
+#header a {
+	text-decoration: none; 
+	color: #000;
+	letter-spacing: 5px;
+/*	font-family: 'Franklin Gothic Bold', 'Arial Black', 'sans-serif';*/
+}
+#form {
+	padding-top: 30px; 
+	padding-bottom: 30px;
+}
+#fred {
+	border: 5px ridge #000;
+}
+select {
+	background: #FFFFFF;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	font-size: 20px;
+	height: auto;
+	width: 350px;
+	margin-right: 25px;
+}	
+select option:hover {
+	color: #FFF;
+	background: #000;
+}
+#links {
+	font-family: 'abril-fatface';
+	font-size: 25px;
+	text-align: center;
+	text-decoration: none;
+	background-color: #080DF8;
+	border-radius: 15px;
+	box-shadow: 5px 9px rgba(55,55,255,.75);
+	padding: 15px 28px;
+	
+	display: inline-block;
+}
+#links a{
+	text-decoration: none;
+	color: #FFF;
+	font-size: 25px;
+	cursor: pointer;
+	position: relative;
+	z-index: 1;
+/*	border: ridge thick #F00;*/
+	padding: 10px 80px;
+	margin: -2em;
+	font-weight: bold;
+}
+

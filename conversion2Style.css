@@ -1,0 +1,102 @@
+@charset "utf-8";
+/* CSS Document */
+
+label {
+	display: inline-block;
+	width: 275px;
+	text-align: left;
+}
+
+body {
+	margin-left: 50px;
+	font-family:"Verdana";
+	background-color: #FFFAF0;
+}
+#header1 {
+	font-size: 50px; 
+	border-bottom: double #55F; 
+	min-width: 50%;
+	max-height: 70%
+}
+#headerLink {
+	text-decoration: none; 
+	color: #000;
+}
+#mainForm {
+	padding-top: 10px;
+}
+#hidden {
+	visibility: hidden;
+}
+select {
+	background: #FFFFFF;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	font-size: 20px;
+	height: auto;
+	width: 200px;
+	margin-right: 25px;
+}
+select option:hover {
+	color: #FFFFFF;
+	background: #000000;
+}
+#divID {
+	padding-bottom: 10px;
+	margin-bottom: 20px;
+}
+#toUnitIDlbl {
+	margin-left: 50px;
+}
+#toUnitID {
+	margin-left: 100px;
+}
+#back {
+	margin-bottom: 50px; 
+	text-decoration: none;
+	color: #000;
+	background-color: #EEF;
+}
+#back:hover {
+	border-bottom: double #999;
+}
+label {
+	display: inline-block;
+	font-size: 25px;
+	font-family: "abril-fatface";
+	font-weight: bold;
+}
+input:hover {
+	border-color: rgba(0,200,255,.85);
+}
+#linkDiv {
+	white-space: nowrap;
+}
+#links {
+	font-family: 'abril-fatface';
+	font-size: 25px;
+	text-align: center;
+	text-decoration: none;
+	background-color: #080DF8;
+	border-radius: 15px;
+	box-shadow: 5px 9px rgba(55,55,255,.75);
+	padding: 15px 28px;
+	display: inline-block;
+	white-space: nowrap;
+}
+#links a {
+	text-decoration: none;
+	color: #FFF;
+	font-size: 25px;
+	cursor: pointer;
+	position: relative;
+	z-index: 1;
+/*	border: ridge thick #F00;*/
+	padding: 10px 90px;
+	margin: -2em;
+}
+#links #bomID {
+	position: relative;
+	padding: 10px 70px;
+	margin: -2;
+}

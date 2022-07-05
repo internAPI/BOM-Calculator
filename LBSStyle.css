@@ -1,0 +1,32 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	background-color: #FFFAF0;
+}
+#header1 {
+	text-decoration: none;
+	padding: auto;
+}
+
+#bold {
+	color: #F00;
+}
+#addFilmID {
+	margin-left: 200px;
+}
+#filmTrackerID {
+	display: none;
+}
+#lbsID {
+	display: none;
+}
+#notifID {
+	color: #F00;
+}
+#remBut {
+	margin-left: 50px;
+	display: inline;
+}
+
+

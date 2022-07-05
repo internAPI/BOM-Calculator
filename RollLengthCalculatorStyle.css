@@ -1,0 +1,219 @@
+input {
+	background-color: #FFEEEE; 
+	width: 150px; 
+	height: 20px; 
+	font-size: 12pt; 
+	font-weight: bold; 
+}
+label {
+	font-family: 'abril-fatface';
+	font-weight: bold;
+	display: inline-block;
+	width: 275px;
+}
+#img {
+	width: 265;
+	height: 168;
+}
+#footP1 {
+	margin-left: 10%;
+}
+#tbCalc {
+	text-align: center;
+	height: 25px; 
+	font-weight: bold; 
+	font-size: 18px;
+}
+#mainBody {
+	margin-top: 3%; 
+	margin-left: 5%; 
+	margin-bottom: 150px; 
+	background-color: #FFFAF0;
+}
+#header1 {
+	font-size: 50px;
+	border-bottom: double #55F; 
+	width: 750px;
+}
+#header2 {
+	font-size: 30px;
+	border-bottom: double #55F;
+	width: 500px;
+}
+#headerLink {
+	text-decoration: none; 
+	color: #000;
+}
+#back {
+	margin-bottom: 50px; 
+	text-decoration: none; 
+	color: #000;font-weight: bolder;
+	font-size: 20px;
+	background-color: #EEF;
+}
+#footageDiv {
+	margin-bottom: 7%;
+}
+
+#footP1 {
+	margin-left: 10%;
+}
+#tblLine {
+	border: none;
+	padding: 0%;
+	border-spacing: none;
+	background-color: #FF9F44;
+	width: 99%;
+}
+#tblLine tr td {
+	height: 4;
+}
+#mainTable {
+	border: groove #ebb34e;
+	border-spacing: inherit;
+	width: 750px;
+	padding: 0;
+}
+#mainInner{
+	width: 100%;
+	background-color: #ebb34e;
+	border: 7px ridge #000;
+	border-spacing: inherit;
+}
+#mainInner #mainInnerBody{
+	border: 9px ridge #000;
+}
+#mainInner #mainRow {
+	background-color: #EEEE33;
+}
+#mainInner #lastRow {
+	background-color: #cc9933;
+
+}
+#mainInner tr #tblHeader {
+	font-size: 18px;
+	text-align: center;
+	border: ridge thin #000;
+}
+#mainInner tr .main {
+	text-align: center;
+	border: ridge thin #000;
+	height: 32px;
+	font-weight: bold;
+}
+#lastCell {
+	text-align: center;
+	font-size: 18px; 
+	font-weight: bold;
+}
+#lastRow table th {
+	background-color: #cc9933;
+}
+
+#lastRow th {
+	border: ridge thin #000;
+}
+#lastRow table {
+	align: center; 
+	border-spacing: 7px; 
+	
+}
+#dropdown select {
+	text-align: center;
+	font-weight: bold;
+}
+.submit {
+	font-weight: bold; 
+	font-size: 18px;
+}
+#goBack {
+	color: #000000; 
+	font-size: 17px; 
+	font-weight: bold;
+}
+#linkDiv {
+	white-space: nowrap;
+}
+#links {
+	font-size: 24px;
+	text-align: center;
+	text-decoration: none;
+	background-color: #080DF8;
+	border-radius: 15px;
+	box-shadow: 0 9px rgba(55,55,255,.75);
+	padding: 15px 28px;
+	display: inline-block;
+}
+
+#links a {
+	text-decoration: none;
+	color: #FFF;
+	font-size: 25px;
+	cursor: pointer;
+	position: relative;
+	z-index: 1;
+/*	border: ridge thick #F00;*/
+	padding: 10px 90px;
+	margin: -2em;
+}
+#links #bomID {
+	position: relative;
+	padding: 10px 70px;
+	margin: -2;
+}
+#mainInner #estRow {
+	background-color: #EEEE33;
+	border: 7px ridge thin #000;
+}
+#mainInner #estRow #estHeader {
+	font-size: 18px;
+	border: ridge thin #000;
+}
+#estRow td {
+	font-size: 18px;
+	text-align:center;
+	font-weight: bold;
+	height: 32px;
+	border: ridge thin #000;
+}
+#doubleCell {
+	border: ridge thin #000;
+	align-content: center;
+}
+#doubleTable1 {
+	width: 100%;
+	height: inherit;
+/*	border: groove #ebb34e;*/
+	border-spacing: inherit;
+}
+#doubleTable1 tr td  {
+	text-align: center;
+	font-size: 17px;
+	font-weight: bold;
+}
+#doubleTable2 {
+	width: 100%;
+	border-spacing: inherit;
+/*	border: ridge medium #000;*/
+	text-content: center;
+}
+#doubleTable2 tr td {
+	align-content: center;
+	text-align: center;
+	font-size: 16px;
+	font-weight: bold;
+}
+#doubleTable2 tr #firstCellDouble{
+	padding-top: 15px;
+}
+#doubleTable2 tr #lastCellDouble, #doubleTable1 tr #lastCellDouble {
+	border-top: solid thin #333;
+	border-left: none;
+	border-right: none;
+	border-bottom: none;
+	padding-top: 15px;
+}
+
+
+
+

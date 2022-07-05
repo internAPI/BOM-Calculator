@@ -1,0 +1,61 @@
+@charset "utf-8";
+/* CSS Document */
+body {
+	margin-left: 5%;
+	background-color: #FFFAF0;
+	width: 100%;
+}
+
+#header1 {
+	font-size: 50px;
+	border-bottom: double medium rgba(58, 17, 170, .99); 
+/*	width: 750px;*/
+	min-width: 50%;
+	max-width: 75%;
+	display: inline-block;
+}
+#header1 a {
+	text-decoration: none; 
+	color: rgba(0, 0, 0, 1);
+	font-family: 'abril-fatface, sans-serif';
+	text-transform: uppercase;
+} 
+#header1 a:hover {
+	color: rgba(58, 44, 200, .99);
+	text-shadow: 0 0 2px rgba(0, 0, 255, .75);
+}
+#links {
+	text-align: center;
+	font-family: 'abril-fatface, sans-serif';
+	font-size: 50px;
+	margin-right: 20px;
+	border: ridge medium rgba(25,25,255, .75);
+/*	background-color: rgba(200,200,255,.75);*/
+	border-radius: 5px;
+	box-shadow: 12px 15px rgba(55,55,255,.75);
+	padding: 30px 70px;
+	width: 475px;
+	position: absolute;
+}
+#links a {
+	text-decoration: none;
+	color: #000;
+	cursor: pointer;
+	position: relative;
+	z-index: 1;
+	width: inherit;
+/*	border: ridge thick #F00;*/
+	padding: 30px 70px;
+	margin: -3em;
+}
+#links a:hover {
+	color: rgba(0,0,255,.50);
+	text-shadow: 0 0 4px rgba(0, 0, 255, .75);
+}
+#links:hover {
+	box-shadow: 6px 6px rgba(0,0,255,.75);
+	border-color: rgba(25,25,255, 1);
+/*	background-color: rgba(255,255,255,.89);*/
+	background-image: linear-gradient(to bottom right, rgba(225,225,255,.55), rgba(225,225,255,.85));
+}
+
