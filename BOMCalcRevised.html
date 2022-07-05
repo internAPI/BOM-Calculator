@@ -19,7 +19,7 @@
 // MFT mainDisplay			
 			function mftMainDisplay($title) {
 				echo "
-				<form method = 'POST' action ='BOMCalcRevised.php'>
+				<form method = 'POST' action ='BOMCalcRevised.html'>
 					<h1 id = 'header1' style = 'padding: auto;' >$title BOM</h1>
 					<p >
 						<label for = 'numacross'><b id = 'bold' >*</b>Number Across<b id = 'bold' >*</b>:</label>
@@ -47,7 +47,7 @@
 // Impression main Display			
 			function impressionMainDisplay($title) {
 				echo "
-					<form method = 'POST' action ='BOMCalcRevised.php'>
+					<form method = 'POST' action ='BOMCalcRevised.html'>
 						<h1 id = 'header1' > M ($title) BOM</h1>
 						
 						
@@ -90,7 +90,7 @@
 			function msiMainDisplay($title) {
 				echo
 					"
-					<form method = 'POST' action ='BOMCalcRevised.php'>
+					<form method = 'POST' action ='BOMCalcRevised.html'>
 						<h1 id = 'header1' >$title BOM</h1>
 						<p>
 							<b id = 'bold' > *</b> CANNOT BE ZERO! <b id = 'bold' >* </b>
@@ -126,12 +126,12 @@
 			} // endae msiMainDisplay function
 // LBS Main display			
 			function lbsMainDisplay($title) {
-				include('LBSPage.php');
+				include('LBSPage.html');
 			} // endae lbsMainDisplay function
 // MTR main display		
 			function mtrMainDisplay($title) {
 				echo "
-				<form method = 'POST' action ='BOMCalcRevised.php'>
+				<form method = 'POST' action ='BOMCalcRevised.html'>
 					<h1 id = 'header1' >$title BOM</h1>
 					<p >
 						<label for = 'numacross'>Number Across <b id = 'bold' >* </b>:</label>
@@ -169,10 +169,10 @@
 	</h1>
 	
 <!--	creating a link to go back to the API reference-->
-	<a id = 'back' href = "index.php" >&laquo;&laquo; Back To Main</a>
+	<a id = 'back' href = "index.html" >&laquo;&laquo; Back To Main</a>
 	<br>
 <!--	defining form for user input of BOMCalcRevised.php-->
-	<form id = 'mainForm' enctype="multipart/form-data" autocomplete="off" method = "POST" action = "BOMCalcRevised.php">
+	<form id = 'mainForm' enctype="multipart/form-data" autocomplete="off" method = "POST" action = "BOMCalcRevised.html">
 <!--		creating a drop downlist-->
 		<select name = selection onchange = "this.form.submit();" >
 <!--			options for dropdown list-->
